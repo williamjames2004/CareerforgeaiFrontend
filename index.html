@@ -1,266 +1,444 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerForge AI - Placement Trainer</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerForge AI | AI-Powered Placement Preparation & Interview Practice</title>
+
+    <meta name="description"
+          content="CareerForge AI is an AI-powered placement preparation platform that helps students practice technical interviews, HR interviews, group discussions, communication skills and resume preparation.">
+
+    <meta name="keywords"
+          content="CareerForge AI, AI placement trainer, placement preparation, AI interview practice, technical interview practice, HR interview practice, college placement preparation, student interview preparation">
+
+    <meta name="author" content="William James">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://williamjames.netlify.app/careerforge-ai/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+          content="CareerForge AI | AI-Powered Placement Trainer">
+    <meta property="og:description"
+          content="Practice technical and HR interviews with AI and improve your placement readiness with CareerForge AI.">
+    <meta property="og:url"
+          content="https://williamjames.netlify.app/careerforge-ai/">
+    <meta property="og:site_name" content="CareerForge AI">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title"
+          content="CareerForge AI | AI-Powered Placement Trainer">
+    <meta name="twitter:description"
+          content="Practice interviews and prepare smarter for placements with CareerForge AI.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+          rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #f7f8fc;
-            color: #171923;
+            background: #f8f9fc;
+            color: #172033;
         }
 
         .navbar {
-            background: rgba(255,255,255,.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
+            background: rgba(255,255,255,.94);
         }
 
         .brand-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: #4f46e5;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 21px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
+            box-shadow: 0 8px 22px rgba(79,70,229,.25);
         }
 
         .hero {
-            min-height: 650px;
-            background: linear-gradient(135deg,#eef2ff,#ffffff 55%,#f5f3ff);
-            display: flex;
-            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 20%,rgba(99,102,241,.16),transparent 30%),
+                radial-gradient(circle at 10% 80%,rgba(124,58,237,.10),transparent 28%),
+                linear-gradient(135deg,#eef2ff,#ffffff 55%,#f5f3ff);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(79,70,229,.08);
+            filter: blur(5px);
+            top: -180px;
+            right: -120px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title {
-            font-size: clamp(42px,6vw,72px);
+            font-size: clamp(2.8rem,6vw,5.3rem);
             font-weight: 800;
-            line-height: 1.05;
+            letter-spacing: -2px;
+            line-height: 1.03;
         }
 
-        .hero-title span {
-            color: #4f46e5;
+        .gradient-text {
+            background: linear-gradient(90deg,#4f46e5,#7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .hero-text {
-            max-width: 650px;
-            font-size: 18px;
+        .hero-description {
+            max-width: 680px;
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: #64748b;
-        }
-
-        .btn-primary {
-            background: #4f46e5;
-            border-color: #4f46e5;
-        }
-
-        .btn-primary:hover {
-            background: #4338ca;
-            border-color: #4338ca;
         }
 
         .hero-card {
-            background: white;
-            border: 0;
-            border-radius: 28px;
-            box-shadow: 0 25px 70px rgba(79,70,229,.14);
+            border: 1px solid rgba(255,255,255,.8);
+            box-shadow: 0 25px 80px rgba(79,70,229,.16);
+            backdrop-filter: blur(12px);
         }
 
-        .ai-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 24px;
-            background: #eef2ff;
+        .ai-icon {
+            width: 82px;
+            height: 82px;
+            background: linear-gradient(135deg,#eef2ff,#ede9fe);
             color: #4f46e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 38px;
         }
 
-        .stat-box {
-            border-radius: 18px;
-            background: #f8f9ff;
-            padding: 20px;
+        .stat-card {
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
-        .section-title {
-            font-weight: 800;
-            font-size: 40px;
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.07);
         }
 
         .feature-card {
-            background: white;
             border: 1px solid #edf0f6;
-            border-radius: 22px;
-            padding: 30px;
-            height: 100%;
-            transition: .25s;
+            transition: transform .25s ease,
+                        box-shadow .25s ease,
+                        border-color .25s ease;
             cursor: pointer;
         }
 
         .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(0,0,0,.08);
+            transform: translateY(-8px);
+            border-color: #c7d2fe;
+            box-shadow: 0 18px 45px rgba(79,70,229,.11);
         }
 
         .feature-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 16px;
+            width: 60px;
+            height: 60px;
             background: #eef2ff;
             color: #4f46e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            margin-bottom: 20px;
         }
 
-        .coming {
-            font-size: 12px;
-            font-weight: 700;
-            background: #fff7ed;
-            color: #ea580c;
-            padding: 5px 10px;
-            border-radius: 30px;
+        .step-number {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
         }
 
         .users-section {
-            background: #4f46e5;
-            color: white;
+            background:
+                radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 25%),
+                radial-gradient(circle at 80% 80%,rgba(255,255,255,.10),transparent 25%),
+                linear-gradient(135deg,#4338ca,#6d28d9);
         }
 
-        .user-count {
-            font-size: clamp(42px,6vw,68px);
-            font-weight: 800;
+        .portfolio-section {
+            background:
+                linear-gradient(135deg,#111827,#1e1b4b);
+            position: relative;
+            overflow: hidden;
         }
 
-        footer {
-            background: #111827;
-            color: #cbd5e1;
+        .portfolio-section::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(99,102,241,.15);
+            filter: blur(40px);
+            right: -100px;
+            top: -120px;
         }
 
-        .modal-content {
-            border: 0;
-            border-radius: 24px;
+        .portfolio-card {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .portfolio-arrow {
+            transition: transform .25s ease;
+        }
+
+        .portfolio-link:hover .portfolio-arrow {
+            transform: translateX(5px);
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: white !important;
         }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CareerForge AI",
+        "description": "AI-powered placement preparation and interview practice platform for students.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "author": {
+            "@type": "Person",
+            "name": "William James",
+            "url": "https://williamjames.netlify.app/"
+        }
+    }
+    </script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg border-bottom sticky-top">
-    <div class="container py-2">
-        <a href="index.html" class="navbar-brand d-flex align-items-center gap-2 fw-bold">
-            <div class="brand-icon">
-                <i class="bi bi-stars"></i>
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top shadow-sm">
+        <div class="container py-2">
+
+            <a href="index.html"
+               class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+               aria-label="CareerForge AI Home">
+
+                <span class="brand-icon rounded-3 d-flex align-items-center justify-content-center text-white">
+                    <i class="bi bi-stars fs-5"></i>
+                </span>
+
+                <span class="fs-5">
+                    CareerForge AI
+                </span>
+
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+
+                <a href="login.html"
+                   class="btn btn-outline-dark rounded-3 px-3 px-md-4"
+                   id="loginButton">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>
+                    Login
+                </a>
+
+                <a href="register.html"
+                   class="btn btn-primary rounded-3 px-3 px-md-4"
+                   id="getStartedButton">
+                    Get Started
+                </a>
+
+                <button class="btn btn-outline-danger rounded-3 px-3 d-none"
+                        id="logoutButton">
+                    <i class="bi bi-box-arrow-right me-1"></i>
+                    Logout
+                </button>
+
             </div>
-            <span>CareerForge AI</span>
-        </a>
 
-        <div class="d-flex align-items-center gap-2">
-            <a href="login.html" class="btn btn-outline-dark rounded-3 px-4" id="loginButton">
-                Login
-            </a>
-            <a href="register.html" class="btn btn-primary rounded-3 px-4" id="getStartedButton">
-                Get Started
-            </a>
-            <button class="btn btn-outline-danger rounded-3 d-none" id="logoutButton">
-                Logout
-            </button>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 
+<main>
+
+<!-- HERO -->
 <section class="hero">
     <div class="container py-5">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-5 py-lg-5 hero-content">
 
             <div class="col-lg-7">
-                <div class="badge bg-light text-primary border px-3 py-2 rounded-pill mb-4">
-                    <i class="bi bi-stars me-1"></i>
-                    AI-Powered Placement Trainer
+
+                <div class="d-inline-flex align-items-center gap-2
+                            bg-white border border-primary-subtle
+                            text-primary rounded-pill px-3 py-2 mb-4 shadow-sm">
+
+                    <i class="bi bi-stars"></i>
+
+                    <span class="fw-semibold small">
+                        AI-POWERED PLACEMENT TRAINER
+                    </span>
+
                 </div>
 
                 <h1 class="hero-title mb-4">
-                    Practice today.<br>
-                    <span>Get hired tomorrow.</span>
+                    Practice today.
+                    <span class="gradient-text d-block">
+                        Get hired tomorrow.
+                    </span>
                 </h1>
 
-                <p class="hero-text mb-4">
-                    CareerForge AI helps students prepare for placements through
-                    AI-powered interviews, communication practice, group discussions,
-                    and personalized performance feedback.
+                <p class="hero-description text-secondary mb-4">
+                    CareerForge AI helps students prepare for placements
+                    through AI-powered technical interviews, HR interviews,
+                    communication practice, group discussions and
+                    personalized performance improvement.
                 </p>
 
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="register.html" class="btn btn-primary btn-lg px-4 py-3 rounded-3">
-                        Get Started
+                <div class="d-flex flex-wrap gap-3 mb-5">
+
+                    <a href="register.html"
+                       class="btn btn-primary btn-lg rounded-3 px-4 py-3 shadow-sm">
+                        Start Preparing
                         <i class="bi bi-arrow-right ms-2"></i>
                     </a>
 
-                    <a href="#features" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-3">
+                    <a href="#features"
+                       class="btn btn-light border btn-lg rounded-3 px-4 py-3">
                         Explore Features
+                        <i class="bi bi-grid ms-2"></i>
                     </a>
+
                 </div>
 
-                <div class="d-flex flex-wrap gap-4 mt-5 text-secondary">
-                    <div>
+                <div class="d-flex flex-wrap gap-4 text-secondary">
+
+                    <span>
                         <i class="bi bi-check-circle-fill text-success me-2"></i>
                         AI Practice
-                    </div>
-                    <div>
+                    </span>
+
+                    <span>
                         <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        Personalized Feedback
-                    </div>
-                    <div>
+                        Personalized
+                    </span>
+
+                    <span>
                         <i class="bi bi-check-circle-fill text-success me-2"></i>
                         Placement Focused
-                    </div>
+                    </span>
+
                 </div>
+
             </div>
 
+
+            <!-- AI CARD -->
             <div class="col-lg-5">
-                <div class="card hero-card p-4 p-md-5">
-                    <div class="ai-circle mb-4">
-                        <i class="bi bi-robot"></i>
-                    </div>
 
-                    <h3 class="fw-bold mb-3">
-                        Your AI Placement Coach
-                    </h3>
+                <div class="card hero-card border-0 rounded-4 overflow-hidden">
 
-                    <p class="text-secondary">
-                        Analyze your performance, practice repeatedly,
-                        identify weaknesses and improve before facing the
-                        real interview.
-                    </p>
+                    <div class="card-body p-4 p-md-5">
 
-                    <div class="row g-3 mt-3">
-                        <div class="col-6">
-                            <div class="stat-box">
-                                <div class="fs-3 fw-bold text-primary">15</div>
-                                <small class="text-secondary">AI Questions</small>
-                            </div>
+                        <div class="ai-icon rounded-4 d-flex align-items-center
+                                    justify-content-center mb-4">
+                            <i class="bi bi-robot display-5"></i>
                         </div>
 
-                        <div class="col-6">
-                            <div class="stat-box">
-                                <div class="fs-3 fw-bold text-primary">AI</div>
-                                <small class="text-secondary">Feedback</small>
-                            </div>
+                        <div class="d-flex gap-2 mb-3">
+                            <span class="badge bg-primary-subtle text-primary">
+                                AI COACH
+                            </span>
+
+                            <span class="badge bg-success-subtle text-success">
+                                READY
+                            </span>
                         </div>
+
+                        <h2 class="h3 fw-bold mb-3">
+                            Your AI Placement Coach
+                        </h2>
+
+                        <p class="text-secondary lh-lg">
+                            Practice realistic interview questions,
+                            understand your weaknesses and improve
+                            your confidence before facing the real interview.
+                        </p>
+
+                        <div class="row g-3 mt-3">
+
+                            <div class="col-6">
+                                <div class="stat-card bg-light border rounded-4 p-3">
+                                    <div class="fs-2 fw-bold text-primary">
+                                        15
+                                    </div>
+
+                                    <small class="text-secondary">
+                                        AI Questions
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="stat-card bg-light border rounded-4 p-3">
+                                    <div class="fs-2 fw-bold text-primary">
+                                        AI
+                                    </div>
+
+                                    <small class="text-secondary">
+                                        Feedback
+                                    </small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="border-top mt-4 pt-4">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="bg-success-subtle text-success rounded-circle
+                                            d-flex align-items-center justify-content-center"
+                                     style="width:44px;height:44px;">
+                                    <i class="bi bi-shield-check fs-5"></i>
+                                </div>
+
+                                <div>
+                                    <div class="fw-semibold">
+                                        Practice without pressure
+                                    </div>
+
+                                    <small class="text-secondary">
+                                        Improve before the real interview.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
 
         </div>
@@ -268,192 +446,639 @@
 </section>
 
 
-<section class="py-5" id="features">
+<!-- FEATURES -->
+<section class="py-5 bg-white" id="features">
     <div class="container py-5">
 
         <div class="text-center mb-5">
-            <div class="text-primary fw-bold mb-2">CAREERFORGE AI</div>
-            <h2 class="section-title mb-3">
-                Everything you need to prepare
+
+            <div class="text-primary fw-bold small mb-2">
+                CAREERFORGE AI
+            </div>
+
+            <h2 class="display-6 fw-bold mb-3">
+                Everything you need for placement preparation
             </h2>
-            <p class="text-secondary mx-auto" style="max-width:650px;">
-                Practice the important stages of placement preparation
-                in one AI-powered platform.
+
+            <p class="text-secondary lead mx-auto"
+               style="max-width:700px;">
+                Build interview confidence and improve your placement
+                readiness with AI-powered practice tools.
             </p>
+
         </div>
+
 
         <div class="row g-4">
 
+            <!-- INTERVIEW -->
             <div class="col-md-6 col-lg-3">
-                <div class="feature-card feature-link" data-feature="interview">
-                    <div class="feature-icon">
-                        <i class="bi bi-person-video3"></i>
+
+                <article class="feature-card card h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="feature-icon rounded-4 d-flex
+                                    align-items-center justify-content-center mb-4">
+                            <i class="bi bi-person-video3 fs-4"></i>
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            AI Interview Practice
+                        </h3>
+
+                        <p class="text-secondary lh-lg">
+                            Practice technical and HR interviews
+                            with personalized AI-generated questions.
+                        </p>
+
+                        <div class="text-primary fw-semibold mt-4">
+                            <a href="interview-setup.html" class="text-decoration-none">Start Interview</a>
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </div>
+
                     </div>
-                    <h4 class="fw-bold">AI Interview</h4>
-                    <p class="text-secondary">
-                        Practice technical and HR interviews with an AI interviewer.
-                    </p>
-                    <div class="text-primary fw-semibold">
-                        Start Interview
-                        <i class="bi bi-arrow-right ms-1"></i>
-                    </div>
-                </div>
+
+                </article>
+
             </div>
 
+
+            <!-- GD -->
             <div class="col-md-6 col-lg-3">
-                <div class="feature-card feature-link" data-feature="gd">
-                    <div class="feature-icon">
-                        <i class="bi bi-people"></i>
+
+                <article class="feature-card card h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="d-flex justify-content-between
+                                    align-items-start mb-4">
+
+                            <div class="feature-icon rounded-4 d-flex
+                                        align-items-center justify-content-center">
+                                <i class="bi bi-people fs-4"></i>
+                            </div>
+
+                            <span class="badge text-bg-warning rounded-pill">
+                                SOON
+                            </span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            AI Group Discussion
+                        </h3>
+
+                        <p class="text-secondary lh-lg">
+                            Practice group discussions with AI participants
+                            and develop better speaking confidence.
+                        </p>
+
+                        <div class="text-primary fw-semibold mt-4">
+                            Explore
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </div>
+
                     </div>
-                    <div class="d-flex justify-content-between align-items-start gap-2">
-                        <h4 class="fw-bold">AI Group Discussion</h4>
-                        <span class="coming">SOON</span>
-                    </div>
-                    <p class="text-secondary">
-                        Practice group discussions with AI participants.
-                    </p>
-                    <div class="text-primary fw-semibold">
-                        Explore
-                        <i class="bi bi-arrow-right ms-1"></i>
-                    </div>
-                </div>
+
+                </article>
+
             </div>
 
+
+            <!-- COMMUNICATION -->
             <div class="col-md-6 col-lg-3">
-                <div class="feature-card feature-link" data-feature="communication">
-                    <div class="feature-icon">
-                        <i class="bi bi-mic"></i>
+
+                <article class="feature-card card h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="d-flex justify-content-between
+                                    align-items-start mb-4">
+
+                            <div class="feature-icon rounded-4 d-flex
+                                        align-items-center justify-content-center">
+                                <i class="bi bi-mic fs-4"></i>
+                            </div>
+
+                            <span class="badge text-bg-warning rounded-pill">
+                                SOON
+                            </span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Communication Test
+                        </h3>
+
+                        <p class="text-secondary lh-lg">
+                            Evaluate communication and speaking skills
+                            for better interview performance.
+                        </p>
+
+                        <div class="text-primary fw-semibold mt-4">
+                            Explore
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </div>
+
                     </div>
-                    <div class="d-flex justify-content-between align-items-start gap-2">
-                        <h4 class="fw-bold">Communication Test</h4>
-                        <span class="coming">SOON</span>
-                    </div>
-                    <p class="text-secondary">
-                        Evaluate your communication and speaking skills.
-                    </p>
-                    <div class="text-primary fw-semibold">
-                        Explore
-                        <i class="bi bi-arrow-right ms-1"></i>
-                    </div>
-                </div>
+
+                </article>
+
             </div>
 
+
+            <!-- RESUME -->
             <div class="col-md-6 col-lg-3">
-                <div class="feature-card feature-link" data-feature="resume">
-                    <div class="feature-icon">
-                        <i class="bi bi-file-earmark-person"></i>
+
+                <article class="feature-card card h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="d-flex justify-content-between
+                                    align-items-start mb-4">
+
+                            <div class="feature-icon rounded-4 d-flex
+                                        align-items-center justify-content-center">
+                                <i class="bi bi-file-earmark-person fs-4"></i>
+                            </div>
+
+                            <span class="badge text-bg-warning rounded-pill">
+                                SOON
+                            </span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            AI Resume Tester
+                        </h3>
+
+                        <p class="text-secondary lh-lg">
+                            Analyze your resume against your target
+                            job role and identify improvement areas.
+                        </p>
+
+                        <div class="text-primary fw-semibold mt-4">
+                            Explore
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </div>
+
                     </div>
-                    <div class="d-flex justify-content-between align-items-start gap-2">
-                        <h4 class="fw-bold">Resume Tester</h4>
-                        <span class="coming">SOON</span>
-                    </div>
-                    <p class="text-secondary">
-                        Analyze your resume against your target job role.
-                    </p>
-                    <div class="text-primary fw-semibold">
-                        Explore
-                        <i class="bi bi-arrow-right ms-1"></i>
-                    </div>
-                </div>
+
+                </article>
+
             </div>
 
         </div>
+
     </div>
 </section>
 
 
-<section class="users-section py-5">
-    <div class="container py-5 text-center">
-        <i class="bi bi-people-fill fs-1"></i>
+<!-- HOW IT WORKS -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
 
-        <div class="user-count mt-3" id="userCount">
+        <div class="text-center mb-5">
+
+            <div class="text-primary fw-bold small mb-2">
+                HOW IT WORKS
+            </div>
+
+            <h2 class="display-6 fw-bold mb-3">
+                Prepare smarter with CareerForge AI
+            </h2>
+
+            <p class="text-secondary mx-auto"
+               style="max-width:650px;">
+                A simple practice workflow designed to help students
+                become more confident before placement interviews.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                    <div class="card-body p-4 p-lg-5 text-center">
+
+                        <div class="step-number text-white rounded-circle
+                                    d-flex align-items-center justify-content-center
+                                    mx-auto mb-4">
+                            <span class="fw-bold fs-5">1</span>
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Choose your practice
+                        </h3>
+
+                        <p class="text-secondary mb-0">
+                            Select the placement preparation activity
+                            you want to practice.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                    <div class="card-body p-4 p-lg-5 text-center">
+
+                        <div class="step-number text-white rounded-circle
+                                    d-flex align-items-center justify-content-center
+                                    mx-auto mb-4">
+                            <span class="fw-bold fs-5">2</span>
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Practice with AI
+                        </h3>
+
+                        <p class="text-secondary mb-0">
+                            Answer realistic questions in an
+                            interview-style environment.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                    <div class="card-body p-4 p-lg-5 text-center">
+
+                        <div class="step-number text-white rounded-circle
+                                    d-flex align-items-center justify-content-center
+                                    mx-auto mb-4">
+                            <span class="fw-bold fs-5">3</span>
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Improve continuously
+                        </h3>
+
+                        <p class="text-secondary mb-0">
+                            Identify weaknesses and build confidence
+                            through repeated practice.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- USER COUNT -->
+<section class="users-section py-5 text-white">
+
+    <div class="container py-5 text-center">
+
+        <div class="d-inline-flex align-items-center justify-content-center
+                    bg-white bg-opacity-10 rounded-circle mb-3"
+             style="width:76px;height:76px;">
+
+            <i class="bi bi-people-fill fs-2"></i>
+
+        </div>
+
+        <div class="display-2 fw-bold"
+             id="userCount">
             --
         </div>
 
-        <h3 class="fw-bold">
-            App is used by <span id="userCountText">many</span> users
-        </h3>
+        <h2 class="fw-bold mt-2">
+            Students using CareerForge AI
+        </h2>
 
         <p class="mb-0 opacity-75">
-            Students are using CareerForge AI to practice and prepare for placements.
+            Students are using CareerForge AI to practice
+            and prepare for placements.
         </p>
+
     </div>
+
 </section>
 
 
-<section class="py-5">
+<!-- FINAL CTA -->
+<section class="py-5 bg-white">
+
     <div class="container py-5">
+
         <div class="row justify-content-center text-center">
+
             <div class="col-lg-8">
-                <div class="feature-icon mx-auto">
-                    <i class="bi bi-rocket-takeoff"></i>
+
+                <div class="feature-icon rounded-4 d-flex
+                            align-items-center justify-content-center
+                            mx-auto mb-4">
+                    <i class="bi bi-rocket-takeoff fs-2"></i>
                 </div>
 
-                <h2 class="fw-bold mb-3">
+                <h2 class="display-6 fw-bold mb-3">
                     Ready to start your placement journey?
                 </h2>
 
-                <p class="text-secondary mb-4">
-                    Practice with AI, understand your weaknesses and
-                    become more confident before your real interview.
+                <p class="lead text-secondary mb-4">
+                    Practice with AI, understand your weaknesses
+                    and become more confident before your real interview.
                 </p>
 
-                <a href="register.html" class="btn btn-primary btn-lg px-5 rounded-3">
-                    Get Started
+                <a href="register.html"
+                   class="btn btn-primary btn-lg rounded-3 px-5 py-3 shadow-sm">
+                    Start Preparing
                     <i class="bi bi-arrow-right ms-2"></i>
                 </a>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
-<footer class="py-4">
-    <div class="container">
-        <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
-            <div>
-                <strong class="text-white">CareerForge AI</strong>
-                <div class="small mt-1">
-                    Analyze. Practice. Improve. Get Hired.
+<!-- PORTFOLIO BACK LINK -->
+<section class="portfolio-section py-5">
+
+    <div class="container py-4">
+
+        <div class="portfolio-card rounded-4 p-4 p-md-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="badge bg-primary rounded-pill">
+                            PROJECT BY WILLIAM JAMES
+                        </span>
+                    </div>
+
+                    <h2 class="text-white fw-bold mb-3">
+                        Want to know more about the developer?
+                    </h2>
+
+                    <p class="text-white-50 lead mb-0">
+                        Explore William James' portfolio to discover
+                        more projects, skills, achievements and
+                        technology work.
+                    </p>
+
                 </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <a href="https://williamjames.netlify.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="portfolio-link btn btn-light btn-lg rounded-3 px-4">
+
+                        Visit My Portfolio
+
+                        <i class="bi bi-arrow-up-right ms-2 portfolio-arrow"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-secondary">
+
+    <div class="container py-5">
+
+        <div class="row g-4">
+
+            <!-- BRAND -->
+            <div class="col-lg-5">
+
+                <a href="index.html"
+                   class="text-decoration-none text-white d-inline-flex
+                          align-items-center gap-2 mb-3">
+
+                    <span class="brand-icon rounded-3 d-flex
+                                 align-items-center justify-content-center">
+                        <i class="bi bi-stars text-white"></i>
+                    </span>
+
+                    <span class="fw-bold fs-5">
+                        CareerForge AI
+                    </span>
+
+                </a>
+
+                <p class="small lh-lg mb-0"
+                   style="max-width:500px;">
+                    An AI-powered placement preparation platform
+                    designed to help students practice interviews,
+                    improve communication and build confidence
+                    before entering the real placement process.
+                </p>
+
+            </div>
+
+
+            <!-- PLATFORM -->
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Platform
+                </h3>
+
+                <ul class="list-unstyled small mb-0">
+
+                    <li class="mb-2">
+                        <a href="#features"
+                           class="footer-link text-secondary">
+                            AI Interview
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#features"
+                           class="footer-link text-secondary">
+                            Group Discussion
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#features"
+                           class="footer-link text-secondary">
+                            Communication
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#features"
+                           class="footer-link text-secondary">
+                            Resume Tester
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Account
+                </h3>
+
+                <ul class="list-unstyled small mb-0">
+
+                    <li class="mb-2">
+                        <a href="login.html"
+                           class="footer-link text-secondary">
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="register.html"
+                           class="footer-link text-secondary">
+                            Register
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html"
+                           class="footer-link text-secondary">
+                            Home
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PORTFOLIO -->
+            <div class="col-lg-3">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Developer
+                </h3>
+
+                <p class="small mb-3">
+                    Built by William James as an AI-powered
+                    placement preparation project.
+                </p>
+
+                <a href="https://williamjames.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-light btn-sm rounded-3">
+
+                    <i class="bi bi-person-badge me-1"></i>
+                    William James Portfolio
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between align-items-md-center gap-2">
+
+            <div class="small">
+                © 2026 CareerForge AI. All rights reserved.
             </div>
 
             <div class="small">
-                AI-powered communication & placement trainer
+                AI-powered placement & interview preparation
             </div>
+
         </div>
+
     </div>
+
 </footer>
 
 
-<div class="modal fade" id="comingSoonModal" tabindex="-1">
+<!-- COMING SOON MODAL -->
+<div class="modal fade"
+     id="comingSoonModal"
+     tabindex="-1"
+     aria-labelledby="comingSoonModalLabel"
+     aria-hidden="true">
+
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow">
+
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+
             <div class="modal-body text-center p-5">
-                <div class="feature-icon mx-auto mb-4">
-                    <i class="bi bi-stars"></i>
+
+                <div class="feature-icon rounded-4 d-flex
+                            align-items-center justify-content-center
+                            mx-auto mb-4">
+
+                    <i class="bi bi-stars fs-2"></i>
+
                 </div>
 
-                <h3 class="fw-bold mb-2">
+                <h2 class="h3 fw-bold mb-2"
+                    id="comingSoonModalLabel">
                     Coming Soon
-                </h3>
+                </h2>
 
                 <p class="text-secondary mb-4">
                     This feature is currently under development.
                     We're working to bring it to CareerForge AI soon.
                 </p>
 
-                <button class="btn btn-primary px-4 rounded-3" data-bs-dismiss="modal">
+                <button class="btn btn-primary px-4 rounded-3"
+                        data-bs-dismiss="modal">
                     Got it
                 </button>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 
 
+<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="api.js"></script>
+
 <script>
 const token = localStorage.getItem("careerforge_token");
 
@@ -467,53 +1092,77 @@ if (token) {
     logoutButton.classList.remove("d-none");
 }
 
+
 logoutButton.addEventListener("click", function() {
+
     localStorage.removeItem("careerforge_token");
     localStorage.removeItem("user");
     localStorage.removeItem("careerforge_interview_id");
     localStorage.removeItem("careerforge_interview_type");
+
     window.location.reload();
+
 });
 
 
 async function loadUserCount() {
+
     try {
-        const response = await fetch(`${API_BASE}/api/users/getdetails`);
+
+        const response =
+            await fetch(`${API_BASE}/api/users/getdetails`);
+
         const data = await response.json();
 
         if (data.success) {
-            const count = data.count;
-            document.getElementById("userCount").textContent = count;
-            document.getElementById("userCountText").textContent = count;
+
+            document.getElementById("userCount").textContent =
+                data.count;
+
         }
+
     } catch (error) {
+
         console.error("User count error:", error);
+
         document.getElementById("userCount").textContent = "0";
-        document.getElementById("userCountText").textContent = "0";
+
     }
+
 }
 
 
 document.querySelectorAll(".feature-link").forEach(function(feature) {
+
     feature.addEventListener("click", function() {
+
         const featureName = this.dataset.feature;
 
         if (!localStorage.getItem("careerforge_token")) {
-            window.location.href = "login.html?redirect=interview-setup.html";
+
+            window.location.href =
+                "login.html?redirect=interview-setup.html";
+
             return;
         }
 
         if (featureName === "interview") {
-            window.location.href = "interview-setup.html";
+
+            window.location.href =
+                "interview-setup.html";
+
             return;
         }
 
-        const modal = new bootstrap.Modal(
-            document.getElementById("comingSoonModal")
-        );
+        const modal =
+            new bootstrap.Modal(
+                document.getElementById("comingSoonModal")
+            );
 
         modal.show();
+
     });
+
 });
 
 

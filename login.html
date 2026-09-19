@@ -1,277 +1,1079 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerForge AI - Login</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Login | CareerForge AI</title>
+
+    <meta name="description"
+          content="Login to CareerForge AI and continue your personalized AI-powered placement preparation.">
+
+    <meta name="keywords"
+          content="CareerForge AI login, AI interview preparation, placement preparation, technical interview, HR interview">
+
+    <meta name="author" content="William James">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+          rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg,#eef2ff,#ffffff,#f5f3ff);
+            background: #f8f9fc;
+            color: #172033;
+        }
+
+        /* -----------------------------------------
+           NAVBAR
+        ----------------------------------------- */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.08);
         }
 
         .brand-icon {
             width: 44px;
             height: 44px;
             border-radius: 13px;
-            background: #4f46e5;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 21px;
+            box-shadow: 0 8px 22px rgba(79, 70, 229, 0.25);
         }
+
+        .brand-name {
+            color: #172033;
+        }
+
+        /* -----------------------------------------
+           LOGIN HERO
+        ----------------------------------------- */
+
+        .login-section {
+            position: relative;
+            min-height: calc(100vh - 73px);
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(99, 102, 241, 0.16),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(124, 58, 237, 0.12),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #ffffff 55%,
+                    #f5f3ff
+                );
+        }
+
+        .login-section::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.07);
+            filter: blur(15px);
+            top: -170px;
+            right: -100px;
+        }
+
+        .login-section::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.06);
+            filter: blur(20px);
+            bottom: -130px;
+            left: -80px;
+        }
+
+        .login-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* -----------------------------------------
+           LOGIN CARD
+        ----------------------------------------- */
 
         .login-card {
-            border: 0;
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 26px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.09);
-        }
-
-        .form-control {
-            min-height: 52px;
-            border-radius: 12px;
-        }
-
-        .form-control:focus {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 .2rem rgba(79,70,229,.12);
-        }
-
-        .btn-primary {
-            background: #4f46e5;
-            border-color: #4f46e5;
-        }
-
-        .btn-primary:hover {
-            background: #4338ca;
-            border-color: #4338ca;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                0 25px 70px rgba(79, 70, 229, 0.11);
+            backdrop-filter: blur(14px);
         }
 
         .login-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-            background: #eef2ff;
+            width: 76px;
+            height: 76px;
+            border-radius: 22px;
+            background: linear-gradient(
+                135deg,
+                #eef2ff,
+                #f5f3ff
+            );
             color: #4f46e5;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.08);
+        }
+
+        .login-badge {
+            color: #4f46e5;
+            background: #eef2ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+        }
+
+        /* -----------------------------------------
+           FORM
+        ----------------------------------------- */
+
+        .form-label {
+            color: #263044;
+        }
+
+        .form-control {
+            min-height: 52px;
+            border-radius: 12px;
+            border-color: #dee2e6;
+            padding: 12px 15px;
+        }
+
+        .form-control:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.12);
+        }
+
+        .input-group .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .password-toggle {
+            min-width: 52px;
+            border-color: #dee2e6;
+            background: #fff;
+            color: #6c757d;
+        }
+
+        .password-toggle:hover {
+            background: #f8f9fa;
+            color: #4f46e5;
+        }
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #6366f1
+            );
+            border: none;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.20);
+            transition: 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(
+                135deg,
+                #4338ca,
+                #4f46e5
+            );
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(79, 70, 229, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* -----------------------------------------
+           INFO SIDE
+        ----------------------------------------- */
+
+        .benefit-card {
+            border: 1px solid rgba(79, 70, 229, 0.08);
+            background: rgba(255, 255, 255, 0.70);
+            border-radius: 18px;
+            transition: 0.25s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.08);
+        }
+
+        .benefit-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            background: #eef2ff;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* -----------------------------------------
+           PORTFOLIO SECTION
+        ----------------------------------------- */
+
+        .portfolio-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e1b4b
+                );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-section::before {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.14);
+            filter: blur(45px);
+            right: -100px;
+            top: -130px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .portfolio-link {
+            transition: 0.25s ease;
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .portfolio-arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .portfolio-link:hover .portfolio-arrow {
+            transform: translateX(5px);
+        }
+
+        /* -----------------------------------------
+           FOOTER
+        ----------------------------------------- */
+
+        footer {
+            background: #0f172a;
+        }
+
+        .footer-link {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        /* -----------------------------------------
+           RESPONSIVE
+        ----------------------------------------- */
+
+        @media (max-width: 767.98px) {
+            .login-section {
+                min-height: auto;
+            }
+
+            .login-card {
+                border-radius: 22px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
-    <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+<nav class="navbar sticky-top py-3">
+    <div class="container">
 
-        <div class="text-center mb-4">
-            <a href="index.html" class="text-decoration-none text-dark">
-                <div class="d-flex justify-content-center align-items-center gap-2">
-                    <div class="brand-icon">
-                        <i class="bi bi-stars"></i>
-                    </div>
-                    <h4 class="fw-bold mb-0">CareerForge AI</h4>
-                </div>
-            </a>
-        </div>
+        <a href="index.html"
+           class="text-decoration-none d-flex align-items-center gap-2">
 
-        <div class="card login-card p-4 p-md-5">
-
-            <div class="text-center mb-4">
-                <div class="login-icon mx-auto mb-3">
-                    <i class="bi bi-person-lock"></i>
-                </div>
-
-                <h2 class="fw-bold">
-                    Welcome Back
-                </h2>
-
-                <p class="text-secondary mb-0">
-                    Login to continue your placement preparation.
-                </p>
+            <div class="brand-icon">
+                <i class="bi bi-stars"></i>
             </div>
 
-            <div id="message"></div>
-
-            <form id="loginForm">
-
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
+            <div>
+                <div class="brand-name fw-bold">
+                    CareerForge AI
                 </div>
 
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">
-                        Password
-                    </label>
+                <small class="text-secondary">
+                    AI Placement Preparation
+                </small>
+            </div>
 
-                    <div class="input-group">
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="Enter your password"
-                            required
-                        >
+        </a>
 
-                        <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                            id="togglePassword"
-                        >
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </div>
-                </div>
+        <a href="index.html"
+           class="btn btn-outline-primary rounded-3 px-3">
 
-                <button
-                    type="submit"
-                    class="btn btn-primary btn-lg w-100 rounded-3"
-                    id="loginBtn"
-                >
-                    <span id="loginText">
-                        Login
-                    </span>
+            <i class="bi bi-arrow-left me-1"></i>
+            <span class="d-none d-sm-inline">
+                Back to Home
+            </span>
+            <span class="d-sm-none">
+                Home
+            </span>
 
-                    <span
-                        id="loginLoader"
-                        class="spinner-border spinner-border-sm d-none"
-                    ></span>
-                </button>
+        </a>
 
-            </form>
+    </div>
+</nav>
 
-            <div class="text-center mt-4">
-                <span class="text-secondary">
-                    Don't have an account?
+
+<!-- =========================================
+     LOGIN SECTION
+========================================= -->
+
+<section class="login-section py-5">
+
+    <div class="container login-content">
+
+        <div class="row align-items-center justify-content-center g-5 py-lg-5">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="col-lg-6 col-xl-5 d-none d-lg-block">
+
+                <span class="badge login-badge rounded-pill px-3 py-2 mb-3">
+                    <i class="bi bi-stars me-1"></i>
+                    WELCOME BACK
                 </span>
 
-                <a
-                    href="register.html"
-                    class="text-primary fw-semibold text-decoration-none"
-                >
-                    Create Account
-                </a>
+                <h1 class="display-5 fw-bold mb-3">
+                    Continue building
+                    <span class="text-primary">
+                        your career.
+                    </span>
+                </h1>
+
+                <p class="lead text-secondary mb-4">
+                    Sign in to continue your personalized
+                    AI-powered placement preparation journey
+                    with CareerForge AI.
+                </p>
+
+
+                <div class="d-grid gap-3">
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+                                <i class="bi bi-robot"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="fw-bold mb-1">
+                                    AI Interview Practice
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+                                    Practice personalized technical
+                                    and HR interview questions.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+                                <i class="bi bi-person-check"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="fw-bold mb-1">
+                                    Personalized Preparation
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+                                    Prepare based on your skills,
+                                    projects and career goals.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="fw-bold mb-1">
+                                    Improve With Practice
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+                                    Build confidence through consistent
+                                    placement preparation.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
 
-        <div class="text-center mt-4">
-            <a
-                href="index.html"
-                class="text-secondary text-decoration-none small"
-            >
-                <i class="bi bi-arrow-left me-1"></i>
-                Back to Home
-            </a>
+            <!-- LOGIN CARD -->
+
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+                <div class="card login-card p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+
+                        <div class="login-icon mx-auto mb-3">
+                            <i class="bi bi-person-lock"></i>
+                        </div>
+
+                        <span class="badge login-badge rounded-pill px-3 py-2 mb-3">
+                            SECURE LOGIN
+                        </span>
+
+                        <h2 class="fw-bold mb-2">
+                            Welcome Back
+                        </h2>
+
+                        <p class="text-secondary mb-0">
+                            Login to continue your placement preparation.
+                        </p>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div id="message"></div>
+
+
+                    <!-- LOGIN FORM -->
+
+                    <form id="loginForm">
+
+                        <!-- EMAIL -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="email"
+                                class="form-label fw-semibold">
+
+                                <i class="bi bi-envelope me-1 text-primary"></i>
+                                Email Address
+
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="mb-4">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <label
+                                    for="password"
+                                    class="form-label fw-semibold mb-2">
+
+                                    <i class="bi bi-lock me-1 text-primary"></i>
+                                    Password
+
+                                </label>
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="btn password-toggle"
+                                    id="togglePassword"
+                                    aria-label="Show password">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100 rounded-3"
+                            id="loginBtn">
+
+                            <span id="loginText">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+                                Login to CareerForge
+                            </span>
+
+                            <span
+                                id="loginLoader"
+                                class="d-none">
+
+                                <span
+                                    class="spinner-border spinner-border-sm me-2"
+                                    role="status">
+                                </span>
+
+                                Signing in...
+
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- REGISTER -->
+
+                    <div class="text-center mt-4 pt-3 border-top">
+
+                        <span class="text-secondary">
+                            Don't have an account?
+                        </span>
+
+                        <a
+                            href="register.html"
+                            class="text-primary fw-semibold text-decoration-none">
+
+                            Create Account
+                            <i class="bi bi-arrow-right ms-1"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY NOTE -->
+
+                <div class="text-center mt-3">
+
+                    <small class="text-secondary">
+
+                        <i class="bi bi-shield-check text-success me-1"></i>
+
+                        Your account information is securely handled.
+
+                    </small>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-</div>
+</section>
+
+
+<!-- =========================================
+     PORTFOLIO SECTION
+========================================= -->
+
+<section class="portfolio-section py-5">
+
+    <div class="container py-4">
+
+        <div class="portfolio-card rounded-4 p-4 p-md-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <span class="badge bg-primary rounded-pill mb-3">
+                        PROJECT BY WILLIAM JAMES
+                    </span>
+
+                    <h2 class="text-white fw-bold mb-3">
+                        Explore more of my work
+                    </h2>
+
+                    <p class="text-white-50 lead mb-0">
+                        Discover more projects, technical work,
+                        achievements and AI-powered applications
+                        developed by William James.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <a
+                        href="https://williamjames.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="portfolio-link btn btn-light btn-lg rounded-3 px-4">
+
+                        Visit My Portfolio
+
+                        <i class="bi bi-arrow-up-right ms-2 portfolio-arrow"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- BRAND -->
+
+            <div class="col-lg-5">
+
+                <a
+                    href="index.html"
+                    class="text-decoration-none d-inline-flex align-items-center gap-2 mb-3">
+
+                    <div class="brand-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+
+                    <span class="text-white fw-bold fs-5">
+                        CareerForge AI
+                    </span>
+
+                </a>
+
+                <p class="text-secondary mb-0">
+                    An AI-powered platform designed to help
+                    students and job seekers prepare for interviews,
+                    improve communication and build career confidence.
+                </p>
+
+            </div>
+
+
+            <!-- PLATFORM -->
+
+            <div class="col-6 col-lg-3">
+
+                <h6 class="text-white fw-bold mb-3">
+                    Platform
+                </h6>
+
+                <div class="d-grid gap-2">
+
+                    <a href="index.html"
+                       class="footer-link">
+                        Home
+                    </a>
+
+                    <a href="interview-setup.html"
+                       class="footer-link">
+                        AI Interview
+                    </a>
+
+                    <a href="index.html#features"
+                       class="footer-link">
+                        Features
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="col-6 col-lg-4">
+
+                <h6 class="text-white fw-bold mb-3">
+                    Account
+                </h6>
+
+                <div class="d-grid gap-2">
+
+                    <a href="register.html"
+                       class="footer-link">
+                        Create Account
+                    </a>
+
+                    <a href="index.html"
+                       class="footer-link">
+                        Back to Home
+                    </a>
+
+                    <a
+                        href="https://williamjames.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="footer-link">
+
+                        Developer Portfolio
+                        <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary opacity-25 my-4">
+
+
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+
+            <small class="text-secondary">
+                © 2026 CareerForge AI. All rights reserved.
+            </small>
+
+            <small class="text-secondary">
+                Built with AI, technology and ambition.
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script src="api.js"></script>
-<script>
-const loginForm = document.getElementById("loginForm");
-const message = document.getElementById("message");
-const loginBtn = document.getElementById("loginBtn");
-const loginText = document.getElementById("loginText");
-const loginLoader = document.getElementById("loginLoader");
-const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
 
+<script>
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const message =
+    document.getElementById("message");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const loginText =
+    document.getElementById("loginText");
+
+const loginLoader =
+    document.getElementById("loginLoader");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const password =
+    document.getElementById("password");
+
+
+/* -----------------------------------------
+   REDIRECT IF ALREADY LOGGED IN
+----------------------------------------- */
 
 if (localStorage.getItem("careerforge_token")) {
     window.location.href = "index.html";
 }
 
 
+/* -----------------------------------------
+   MESSAGE
+----------------------------------------- */
+
 function showMessage(text, type = "danger") {
+
     message.innerHTML = `
-        <div class="alert alert-${type} rounded-3">
-            ${text}
+        <div class="alert alert-${type} rounded-3 d-flex align-items-center gap-2">
+            <i class="bi ${
+                type === "success"
+                    ? "bi-check-circle-fill"
+                    : "bi-exclamation-circle-fill"
+            }"></i>
+
+            <div>
+                ${text}
+            </div>
         </div>
     `;
+
 }
 
 
-togglePassword.addEventListener("click", function() {
-    if (password.type === "password") {
-        password.type = "text";
-        this.innerHTML = '<i class="bi bi-eye-slash"></i>';
-    } else {
-        password.type = "password";
-        this.innerHTML = '<i class="bi bi-eye"></i>';
-    }
-});
+/* -----------------------------------------
+   TOGGLE PASSWORD
+----------------------------------------- */
 
+togglePassword.addEventListener(
+    "click",
+    function() {
 
-loginForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
+        if (password.type === "password") {
 
-    const email = document.getElementById("email").value.trim();
-    const passwordValue = password.value;
+            password.type = "text";
 
-    loginBtn.disabled = true;
-    loginText.classList.add("d-none");
-    loginLoader.classList.remove("d-none");
-    message.innerHTML = "";
+            this.innerHTML =
+                '<i class="bi bi-eye-slash"></i>';
 
-    try {
-        const response = await fetch(`${API_BASE}/api/auth/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: passwordValue
-            })
-        });
+            this.setAttribute(
+                "aria-label",
+                "Hide password"
+            );
 
-        const data = await response.json();
+        } else {
 
-        if (!data.success) {
-            throw new Error(data.message || "Login failed.");
+            password.type = "password";
+
+            this.innerHTML =
+                '<i class="bi bi-eye"></i>';
+
+            this.setAttribute(
+                "aria-label",
+                "Show password"
+            );
+
         }
 
-        localStorage.setItem("careerforge_token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-
-        showMessage("Login successful. Redirecting...", "success");
-
-        setTimeout(function() {
-            const params = new URLSearchParams(window.location.search);
-            const redirect = params.get("redirect");
-
-            window.location.href = redirect || "index.html";
-        }, 700);
-
-    } catch (error) {
-        showMessage(error.message);
-        loginBtn.disabled = false;
-        loginText.classList.remove("d-none");
-        loginLoader.classList.add("d-none");
     }
-});
+);
+
+
+/* -----------------------------------------
+   LOGIN
+----------------------------------------- */
+
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+        const passwordValue =
+            password.value;
+
+
+        loginBtn.disabled = true;
+
+        loginText.classList.add("d-none");
+
+        loginLoader.classList.remove("d-none");
+
+        message.innerHTML = "";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE}/api/auth/login`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email: email,
+                            password: passwordValue
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!data.success) {
+
+                throw new Error(
+                    data.message ||
+                    "Login failed."
+                );
+
+            }
+
+
+            localStorage.setItem(
+                "careerforge_token",
+                data.token
+            );
+
+
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
+
+
+            showMessage(
+                "Login successful. Redirecting...",
+                "success"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    const params =
+                        new URLSearchParams(
+                            window.location.search
+                        );
+
+                    const redirect =
+                        params.get("redirect");
+
+
+                    window.location.href =
+                        redirect ||
+                        "index.html";
+
+                },
+                700
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Login error:",
+                error
+            );
+
+
+            showMessage(
+                error.message ||
+                "Unable to login."
+            );
+
+
+            loginBtn.disabled = false;
+
+            loginText.classList.remove(
+                "d-none"
+            );
+
+            loginLoader.classList.add(
+                "d-none"
+            );
+
+        }
+
+    }
+);
+
 </script>
 
 </body>

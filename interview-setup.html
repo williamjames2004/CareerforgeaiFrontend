@@ -1,90 +1,185 @@
-<!-- interview-setup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CareerForge AI - Interview Setup</title>
+    <title>AI Interview Setup | CareerForge AI</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="description"
+          content="Set up your personalized technical or HR interview with CareerForge AI and practice with AI-generated placement interview questions.">
+
+    <meta name="keywords"
+          content="AI interview setup, technical interview practice, HR interview practice, placement preparation, CareerForge AI">
+
+    <meta name="author" content="William James">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+          rel="stylesheet">
 
     <style>
-        body {
-            min-height: 100vh;
-            background: #f7f8fc;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .setup-wrapper {
+        body {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
+            background: #f8f9fc;
+            color: #172033;
+        }
+
+        .navbar {
+            backdrop-filter: blur(14px);
+            background: rgba(255,255,255,.94);
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
+            box-shadow: 0 8px 22px rgba(79,70,229,.25);
+        }
+
+        .page-hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 15%,rgba(99,102,241,.15),transparent 28%),
+                radial-gradient(circle at 10% 80%,rgba(124,58,237,.10),transparent 28%),
+                linear-gradient(135deg,#eef2ff,#ffffff 55%,#f5f3ff);
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: rgba(79,70,229,.07);
+            filter: blur(10px);
+            top: -160px;
+            right: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .setup-card {
-            border: 0;
-            border-radius: 24px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255,255,255,.9);
+            box-shadow: 0 25px 70px rgba(79,70,229,.10);
+            backdrop-filter: blur(12px);
         }
 
         .type-card {
             border: 2px solid #e9ecef;
-            border-radius: 20px;
-            transition: 0.25s;
-            text-decoration: none;
-            color: inherit;
-            height: 100%;
+            transition: .25s ease;
             cursor: pointer;
+            background: #fff;
         }
 
         .type-card:hover {
-            border-color: #4f46e5;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.12);
+            transform: translateY(-6px);
+            border-color: #818cf8;
+            box-shadow: 0 18px 45px rgba(79,70,229,.12);
         }
 
         .type-card.active {
             border-color: #4f46e5;
             background: #f8f7ff;
-            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.12);
+            box-shadow: 0 18px 45px rgba(79,70,229,.14);
         }
 
         .type-icon {
             width: 70px;
             height: 70px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 20px;
             background: #eef2ff;
             color: #4f46e5;
-            font-size: 30px;
+            transition: .25s ease;
+        }
+
+        .type-card:hover .type-icon {
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
+            color: #fff;
         }
 
         .form-control {
-            padding: 12px 15px;
+            padding: 13px 15px;
             border-radius: 12px;
+            border-color: #dee2e6;
         }
 
         .form-control:focus {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.12);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 .2rem rgba(79,70,229,.12);
         }
 
         .section-title {
-            font-size: 14px;
-            font-weight: 700;
             color: #4f46e5;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .8px;
             text-transform: uppercase;
-            letter-spacing: 0.7px;
         }
 
-        #detailsSection {
-            display: none;
+        .info-card {
+            background: linear-gradient(135deg,#eef2ff,#f5f3ff);
+        }
+
+        .portfolio-section {
+            background: linear-gradient(135deg,#111827,#1e1b4b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-section::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(99,102,241,.14);
+            filter: blur(40px);
+            right: -100px;
+            top: -120px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .portfolio-arrow {
+            transition: transform .25s ease;
+        }
+
+        .portfolio-link:hover .portfolio-arrow {
+            transform: translateX(5px);
+        }
+
+        .footer-link {
+            text-decoration: none;
+            transition: .2s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff !important;
         }
 
         .loading-spinner {
+            display: none;
+        }
+
+        #detailsSection {
             display: none;
         }
     </style>
@@ -92,376 +187,201 @@
 
 <body>
 
-<div class="container setup-wrapper py-5">
-    <div class="row justify-content-center w-100">
-        <div class="col-xl-9">
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top shadow-sm">
+        <div class="container py-2">
 
-            <div class="card setup-card p-4 p-md-5">
+            <a href="index.html"
+               class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+               aria-label="CareerForge AI Home">
 
-                <!-- TYPE SELECTION -->
+                <span class="brand-icon rounded-3 d-flex align-items-center justify-content-center text-white">
+                    <i class="bi bi-stars fs-5"></i>
+                </span>
 
-                <div id="typeSection">
+                <span class="fs-5">
+                    CareerForge AI
+                </span>
 
-                    <div class="text-center mb-5">
-                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
-                            CAREERFORGE AI
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+
+                <a href="index.html"
+                   class="btn btn-light border rounded-3 px-3">
+                    <i class="bi bi-house me-1"></i>
+                    Home
+                </a>
+
+                <button class="btn btn-outline-danger rounded-3 px-3 d-none"
+                        id="logoutButton">
+                    <i class="bi bi-box-arrow-right me-1"></i>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10">
+
+                <div class="text-center hero-content mb-4">
+
+                    <div class="d-inline-flex align-items-center gap-2
+                                bg-white border border-primary-subtle
+                                text-primary rounded-pill px-3 py-2 mb-3 shadow-sm">
+
+                        <i class="bi bi-stars"></i>
+
+                        <span class="fw-semibold small">
+                            AI INTERVIEW PREPARATION
                         </span>
 
-                        <h1 class="fw-bold mt-3 mb-2">
-                            Choose Your Interview
-                        </h1>
-
-                        <p class="text-secondary mb-0">
-                            Select the type of interview you want to practice.
-                        </p>
                     </div>
 
-                    <div class="row g-4">
+                    <h1 class="display-5 fw-bold mb-3">
+                        Build Your
+                        <span class="text-primary">
+                            Interview Session
+                        </span>
+                    </h1>
 
-                        <div class="col-md-6">
-                            <div class="type-card d-block p-4" data-type="technical">
-
-                                <div class="type-icon mb-4">
-                                    <i class="bi bi-code-slash"></i>
-                                </div>
-
-                                <h3 class="fw-bold">
-                                    Technical Interview
-                                </h3>
-
-                                <p class="text-secondary">
-                                    Practice programming, technical concepts,
-                                    projects, databases, problem solving and
-                                    software development questions.
-                                </p>
-
-                                <span class="text-primary fw-semibold">
-                                    Start Technical Interview
-                                    <i class="bi bi-arrow-right ms-1"></i>
-                                </span>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="type-card d-block p-4" data-type="hr">
-
-                                <div class="type-icon mb-4">
-                                    <i class="bi bi-people"></i>
-                                </div>
-
-                                <h3 class="fw-bold">
-                                    HR Interview
-                                </h3>
-
-                                <p class="text-secondary">
-                                    Practice communication, personality,
-                                    teamwork, leadership, motivation and
-                                    workplace situation questions.
-                                </p>
-
-                                <span class="text-primary fw-semibold">
-                                    Start HR Interview
-                                    <i class="bi bi-arrow-right ms-1"></i>
-                                </span>
-
-                            </div>
-                        </div>
-
-                    </div>
+                    <p class="lead text-secondary mx-auto mb-0"
+                       style="max-width:700px;">
+                        Choose your interview type and tell CareerForge AI
+                        about yourself. Your information helps generate
+                        personalized interview questions.
+                    </p>
 
                 </div>
 
 
-                <!-- DETAILS SECTION -->
+                <!-- SETUP CARD -->
+                <div class="card setup-card border-0 rounded-4 overflow-hidden">
 
-                <div id="detailsSection">
+                    <div class="card-body p-4 p-md-5">
 
-                    <div class="mb-4">
-                        <button
-                            type="button"
-                            id="changeTypeBtn"
-                            class="btn btn-link text-secondary text-decoration-none p-0"
-                        >
-                            <i class="bi bi-arrow-left me-1"></i>
-                            Change Interview Type
-                        </button>
-                    </div>
+                        <!-- TYPE SELECTION -->
+                        <div id="typeSection">
 
-                    <div class="mb-4">
+                            <div class="text-center mb-5">
 
-                        <span
-                            id="interviewBadge"
-                            class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill"
-                        ></span>
+                                <span class="badge bg-primary-subtle text-primary
+                                             px-3 py-2 rounded-pill">
+                                    STEP 1
+                                </span>
 
-                        <h1 class="fw-bold mt-3 mb-2">
-                            Tell Us About Yourself
-                        </h1>
+                                <h2 class="h3 fw-bold mt-3 mb-2">
+                                    Choose Your Interview
+                                </h2>
 
-                        <p class="text-secondary">
-                            These details help CareerForge AI generate
-                            questions specifically for you.
-                        </p>
-
-                    </div>
-
-
-                    <form id="interviewForm">
-
-                        <!-- BASIC DETAILS -->
-
-                        <div class="section-title mb-3">
-                            Basic Information
-                        </div>
-
-                        <div class="row g-3 mb-4">
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Your Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="name"
-                                    class="form-control"
-                                    placeholder="Enter your name"
-                                    required
-                                >
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">
-                                    Target Job Role
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="role"
-                                    class="form-control"
-                                    placeholder="Example: Software Developer"
-                                    required
-                                >
-                            </div>
-
-                        </div>
-
-
-                        <!-- TECHNICAL DETAILS -->
-
-                        <div id="technicalFields">
-
-                            <div class="section-title mb-3">
-                                Technical Information
-                            </div>
-
-                            <div class="row g-3 mb-4">
-
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Programming Languages
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="languages"
-                                        class="form-control"
-                                        placeholder="Python, Java, JavaScript..."
-                                    >
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Technical Skills
-                                    </label>
-
-                                    <textarea
-                                        id="technical_skills"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Data Structures, Algorithms, Machine Learning, Web Development..."
-                                    ></textarea>
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Projects
-                                    </label>
-
-                                    <textarea
-                                        id="projects"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Describe your important academic or personal projects..."
-                                    ></textarea>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Database Knowledge
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="databases"
-                                        class="form-control"
-                                        placeholder="MySQL, MongoDB, PostgreSQL..."
-                                    >
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Other Technologies
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="technologies"
-                                        class="form-control"
-                                        placeholder="Flask, React, Node.js, Git..."
-                                    >
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Experience
-                                    </label>
-
-                                    <textarea
-                                        id="experience"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Internships, work experience or write Fresher..."
-                                    ></textarea>
-                                </div>
+                                <p class="text-secondary mb-0">
+                                    Select the type of interview you want to practice.
+                                </p>
 
                             </div>
 
-                        </div>
 
+                            <div class="row g-4">
 
-                        <!-- HR DETAILS -->
-
-                        <div id="hrFields" style="display:none;">
-
-                            <div class="section-title mb-3">
-                                HR Information
-                            </div>
-
-                            <div class="row g-3 mb-4">
-
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Career Goal
-                                    </label>
-
-                                    <textarea
-                                        id="career_goal"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="What are your career goals?"
-                                    ></textarea>
-                                </div>
-
+                                <!-- TECHNICAL -->
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Your Strengths
-                                    </label>
 
-                                    <textarea
-                                        id="strengths"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="What are your key strengths?"
-                                    ></textarea>
-                                </div>
+                                    <div class="type-card rounded-4 p-4 h-100"
+                                         data-type="technical">
 
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Areas to Improve
-                                    </label>
+                                        <div class="type-icon d-flex
+                                                    align-items-center
+                                                    justify-content-center
+                                                    mb-4">
 
-                                    <textarea
-                                        id="improvements"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="What would you like to improve?"
-                                    ></textarea>
-                                </div>
+                                            <i class="bi bi-code-slash fs-2"></i>
 
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Teamwork Experience
-                                    </label>
+                                        </div>
 
-                                    <textarea
-                                        id="teamwork"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Describe a teamwork experience..."
-                                    ></textarea>
-                                </div>
+                                        <div class="d-flex justify-content-between
+                                                    align-items-start gap-2">
 
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">
-                                        Leadership Experience
-                                    </label>
+                                            <h3 class="h4 fw-bold mb-3">
+                                                Technical Interview
+                                            </h3>
 
-                                    <textarea
-                                        id="leadership"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Describe any leadership experience..."
-                                    ></textarea>
-                                </div>
+                                            <span class="badge bg-primary-subtle text-primary">
+                                                TECH
+                                            </span>
 
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Achievements
-                                    </label>
+                                        </div>
 
-                                    <textarea
-                                        id="achievements"
-                                        class="form-control"
-                                        rows="3"
-                                        placeholder="Academic, technical or personal achievements..."
-                                    ></textarea>
-                                </div>
+                                        <p class="text-secondary lh-lg mb-4">
+                                            Practice programming, technical concepts,
+                                            projects, databases, problem solving and
+                                            software development questions.
+                                        </p>
 
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">
-                                        Interests
-                                    </label>
+                                        <div class="text-primary fw-semibold">
+                                            Start Technical Interview
+                                            <i class="bi bi-arrow-right ms-1"></i>
+                                        </div>
 
-                                    <input
-                                        type="text"
-                                        id="interests"
-                                        class="form-control"
-                                        placeholder="Your interests and hobbies..."
-                                    >
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- AI INFORMATION -->
-
-                        <div class="alert alert-primary border-0 rounded-4">
-
-                            <div class="d-flex gap-3">
-
-                                <i class="bi bi-stars fs-4"></i>
-
-                                <div>
-                                    <strong>15 AI-generated questions</strong>
-
-                                    <div class="small mt-1">
-                                        CareerForge AI will dynamically generate
-                                        questions based on your profile and previous answers.
                                     </div>
+
+                                </div>
+
+
+                                <!-- HR -->
+                                <div class="col-md-6">
+
+                                    <div class="type-card rounded-4 p-4 h-100"
+                                         data-type="hr">
+
+                                        <div class="type-icon d-flex
+                                                    align-items-center
+                                                    justify-content-center
+                                                    mb-4">
+
+                                            <i class="bi bi-people fs-2"></i>
+
+                                        </div>
+
+                                        <div class="d-flex justify-content-between
+                                                    align-items-start gap-2">
+
+                                            <h3 class="h4 fw-bold mb-3">
+                                                HR Interview
+                                            </h3>
+
+                                            <span class="badge bg-primary-subtle text-primary">
+                                                HR
+                                            </span>
+
+                                        </div>
+
+                                        <p class="text-secondary lh-lg mb-4">
+                                            Practice communication, personality,
+                                            teamwork, leadership, motivation and
+                                            workplace situation questions.
+                                        </p>
+
+                                        <div class="text-primary fw-semibold">
+                                            Start HR Interview
+                                            <i class="bi bi-arrow-right ms-1"></i>
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -469,42 +389,602 @@
                         </div>
 
 
-                        <div
-                            id="errorMessage"
-                            class="alert alert-danger d-none rounded-3"
-                        ></div>
+                        <!-- DETAILS -->
+                        <div id="detailsSection">
+
+                            <div class="d-flex justify-content-between
+                                        align-items-center mb-4">
+
+                                <button type="button"
+                                        id="changeTypeBtn"
+                                        class="btn btn-link text-secondary
+                                               text-decoration-none p-0">
+
+                                    <i class="bi bi-arrow-left me-1"></i>
+                                    Change Interview Type
+
+                                </button>
+
+                                <span id="interviewBadge"
+                                      class="badge bg-primary-subtle text-primary
+                                             px-3 py-2 rounded-pill">
+                                </span>
+
+                            </div>
 
 
-                        <button
-                            type="submit"
-                            id="startBtn"
-                            class="btn btn-primary btn-lg w-100 rounded-3 mt-3"
-                        >
-                            <span id="buttonText">
-                                Begin Interview
-                                <i class="bi bi-arrow-right ms-2"></i>
-                            </span>
+                            <div class="mb-4">
 
-                            <span
-                                id="buttonLoading"
-                                class="loading-spinner"
-                            >
-                                <span class="spinner-border spinner-border-sm me-2"></span>
-                                Starting Interview...
-                            </span>
-                        </button>
+                                <span class="badge bg-primary-subtle text-primary
+                                             px-3 py-2 rounded-pill">
+                                    STEP 2
+                                </span>
 
-                    </form>
+                                <h2 class="display-6 fw-bold mt-3 mb-2">
+                                    Tell Us About Yourself
+                                </h2>
+
+                                <p class="text-secondary mb-0">
+                                    These details help CareerForge AI generate
+                                    questions specifically for you.
+                                </p>
+
+                            </div>
+
+
+                            <form id="interviewForm">
+
+                                <!-- BASIC -->
+                                <div class="section-title mb-3">
+                                    <i class="bi bi-person me-1"></i>
+                                    Basic Information
+                                </div>
+
+                                <div class="row g-3 mb-5">
+
+                                    <div class="col-md-6">
+
+                                        <label for="name"
+                                               class="form-label fw-semibold">
+                                            Your Name
+                                        </label>
+
+                                        <input type="text"
+                                               id="name"
+                                               class="form-control"
+                                               placeholder="Enter your name"
+                                               autocomplete="name"
+                                               required>
+
+                                    </div>
+
+
+                                    <div class="col-md-6">
+
+                                        <label for="role"
+                                               class="form-label fw-semibold">
+                                            Target Job Role
+                                        </label>
+
+                                        <input type="text"
+                                               id="role"
+                                               class="form-control"
+                                               placeholder="Example: Software Developer"
+                                               required>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- TECHNICAL -->
+                                <div id="technicalFields">
+
+                                    <div class="section-title mb-3">
+                                        <i class="bi bi-code-square me-1"></i>
+                                        Technical Information
+                                    </div>
+
+                                    <div class="row g-3 mb-4">
+
+                                        <div class="col-12">
+
+                                            <label for="languages"
+                                                   class="form-label fw-semibold">
+                                                Programming Languages
+                                            </label>
+
+                                            <input type="text"
+                                                   id="languages"
+                                                   class="form-control"
+                                                   placeholder="Python, Java, JavaScript...">
+
+                                        </div>
+
+
+                                        <div class="col-12">
+
+                                            <label for="technical_skills"
+                                                   class="form-label fw-semibold">
+                                                Technical Skills
+                                            </label>
+
+                                            <textarea id="technical_skills"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Data Structures, Algorithms, Machine Learning, Web Development..."></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-12">
+
+                                            <label for="projects"
+                                                   class="form-label fw-semibold">
+                                                Projects
+                                            </label>
+
+                                            <textarea id="projects"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Describe your important academic or personal projects..."></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="databases"
+                                                   class="form-label fw-semibold">
+                                                Database Knowledge
+                                            </label>
+
+                                            <input type="text"
+                                                   id="databases"
+                                                   class="form-control"
+                                                   placeholder="MySQL, MongoDB, PostgreSQL...">
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="technologies"
+                                                   class="form-label fw-semibold">
+                                                Other Technologies
+                                            </label>
+
+                                            <input type="text"
+                                                   id="technologies"
+                                                   class="form-control"
+                                                   placeholder="Flask, React, Node.js, Git...">
+
+                                        </div>
+
+
+                                        <div class="col-12">
+
+                                            <label for="experience"
+                                                   class="form-label fw-semibold">
+                                                Experience
+                                            </label>
+
+                                            <textarea id="experience"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Internships, work experience or write Fresher..."></textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- HR -->
+                                <div id="hrFields">
+
+                                    <div class="section-title mb-3">
+                                        <i class="bi bi-person-lines-fill me-1"></i>
+                                        HR Information
+                                    </div>
+
+                                    <div class="row g-3 mb-4">
+
+                                        <div class="col-12">
+
+                                            <label for="career_goal"
+                                                   class="form-label fw-semibold">
+                                                Career Goal
+                                            </label>
+
+                                            <textarea id="career_goal"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="What are your career goals?"></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="strengths"
+                                                   class="form-label fw-semibold">
+                                                Your Strengths
+                                            </label>
+
+                                            <textarea id="strengths"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="What are your key strengths?"></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="improvements"
+                                                   class="form-label fw-semibold">
+                                                Areas to Improve
+                                            </label>
+
+                                            <textarea id="improvements"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="What would you like to improve?"></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="teamwork"
+                                                   class="form-label fw-semibold">
+                                                Teamwork Experience
+                                            </label>
+
+                                            <textarea id="teamwork"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Describe a teamwork experience..."></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label for="leadership"
+                                                   class="form-label fw-semibold">
+                                                Leadership Experience
+                                            </label>
+
+                                            <textarea id="leadership"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Describe any leadership experience..."></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-12">
+
+                                            <label for="achievements"
+                                                   class="form-label fw-semibold">
+                                                Achievements
+                                            </label>
+
+                                            <textarea id="achievements"
+                                                      class="form-control"
+                                                      rows="3"
+                                                      placeholder="Academic, technical or personal achievements..."></textarea>
+
+                                        </div>
+
+
+                                        <div class="col-12">
+
+                                            <label for="interests"
+                                                   class="form-label fw-semibold">
+                                                Interests
+                                            </label>
+
+                                            <input type="text"
+                                                   id="interests"
+                                                   class="form-control"
+                                                   placeholder="Your interests and hobbies...">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- AI INFO -->
+                                <div class="info-card border-0 rounded-4 p-4 mt-4">
+
+                                    <div class="d-flex gap-3">
+
+                                        <div class="text-primary fs-4">
+                                            <i class="bi bi-stars"></i>
+                                        </div>
+
+                                        <div>
+
+                                            <div class="fw-bold">
+                                                Personalized AI Interview
+                                            </div>
+
+                                            <div class="small text-secondary mt-1">
+                                                CareerForge AI will generate
+                                                <strong>15 questions</strong>
+                                                based on your profile,
+                                                interview type and previous answers.
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ERROR -->
+                                <div id="errorMessage"
+                                     class="alert alert-danger d-none rounded-3 mt-4">
+                                </div>
+
+
+                                <!-- SUBMIT -->
+                                <button type="submit"
+                                        id="startBtn"
+                                        class="btn btn-primary btn-lg w-100
+                                               rounded-3 mt-4 py-3 shadow-sm">
+
+                                    <span id="buttonText">
+                                        Begin Interview
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </span>
+
+                                    <span id="buttonLoading"
+                                          class="loading-spinner">
+
+                                        <span class="spinner-border spinner-border-sm me-2"></span>
+                                        Starting Interview...
+
+                                    </span>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
+
     </div>
-</div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section py-5">
+
+    <div class="container py-4">
+
+        <div class="portfolio-card rounded-4 p-4 p-md-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <span class="badge bg-primary rounded-pill mb-3">
+                        PROJECT BY WILLIAM JAMES
+                    </span>
+
+                    <h2 class="text-white fw-bold mb-3">
+                        Explore more of my work
+                    </h2>
+
+                    <p class="text-white-50 lead mb-0">
+                        Visit my portfolio to explore my projects,
+                        technical skills, achievements and other
+                        AI and web development work.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <a href="https://williamjames.netlify.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="portfolio-link btn btn-light btn-lg
+                              rounded-3 px-4">
+
+                        Visit My Portfolio
+
+                        <i class="bi bi-arrow-up-right ms-2 portfolio-arrow"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-secondary">
+
+    <div class="container py-5">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <a href="index.html"
+                   class="text-decoration-none text-white d-inline-flex
+                          align-items-center gap-2 mb-3">
+
+                    <span class="brand-icon rounded-3 d-flex
+                                 align-items-center justify-content-center">
+                        <i class="bi bi-stars text-white"></i>
+                    </span>
+
+                    <span class="fw-bold fs-5">
+                        CareerForge AI
+                    </span>
+
+                </a>
+
+                <p class="small lh-lg mb-0"
+                   style="max-width:500px;">
+                    An AI-powered placement preparation platform designed
+                    to help students practice interviews, improve
+                    communication and build confidence.
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Platform
+                </h3>
+
+                <ul class="list-unstyled small">
+
+                    <li class="mb-2">
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+                            AI Interview
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+                            Group Discussion
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+                            Communication
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+                            Resume Tester
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Account
+                </h3>
+
+                <ul class="list-unstyled small">
+
+                    <li class="mb-2">
+                        <a href="login.html"
+                           class="footer-link text-secondary">
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="register.html"
+                           class="footer-link text-secondary">
+                            Register
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html"
+                           class="footer-link text-secondary">
+                            Home
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Developer
+                </h3>
+
+                <p class="small mb-3">
+                    Built by William James as an AI-powered
+                    placement preparation project.
+                </p>
+
+                <a href="https://williamjames.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-light btn-sm rounded-3">
+
+                    <i class="bi bi-person-badge me-1"></i>
+                    William James Portfolio
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between align-items-md-center gap-2">
+
+            <div class="small">
+                © 2026 CareerForge AI. All rights reserved.
+            </div>
+
+            <div class="small">
+                AI-powered placement & interview preparation
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
 
 <script src="api.js"></script>
+
 <script>
 const token = localStorage.getItem("careerforge_token");
 
@@ -525,76 +1005,132 @@ if (!token) {
     window.location.href = "login.html?redirect=interview-setup.html";
 }
 
+
 document.querySelectorAll(".type-card").forEach(card => {
+
     card.addEventListener("click", () => {
+
+        document.querySelectorAll(".type-card").forEach(item => {
+            item.classList.remove("active");
+        });
+
+        card.classList.add("active");
+
         selectedType = card.dataset.type;
 
         typeSection.style.display = "none";
         detailsSection.style.display = "block";
 
-        interviewBadge.textContent = selectedType.toUpperCase() + " INTERVIEW";
+        interviewBadge.textContent =
+            selectedType.toUpperCase() + " INTERVIEW";
 
         if (selectedType === "technical") {
+
             technicalFields.style.display = "block";
             hrFields.style.display = "none";
+
             setRequiredFields("technical");
+
         } else {
+
             technicalFields.style.display = "none";
             hrFields.style.display = "block";
+
             setRequiredFields("hr");
         }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
     });
+
 });
 
-document.getElementById("changeTypeBtn").addEventListener("click", () => {
-    detailsSection.style.display = "none";
-    typeSection.style.display = "block";
-    form.reset();
-    selectedType = "";
-    errorMessage.classList.add("d-none");
-});
+
+document.getElementById("changeTypeBtn")
+    .addEventListener("click", () => {
+
+        detailsSection.style.display = "none";
+        typeSection.style.display = "block";
+
+        form.reset();
+
+        selectedType = "";
+
+        document.querySelectorAll(".type-card").forEach(item => {
+            item.classList.remove("active");
+        });
+
+        errorMessage.classList.add("d-none");
+
+    });
+
 
 function setRequiredFields(type) {
-    document.querySelectorAll("#technicalFields input, #technicalFields textarea, #hrFields input, #hrFields textarea").forEach(field => {
+
+    document.querySelectorAll(
+        "#technicalFields input, #technicalFields textarea, #hrFields input, #hrFields textarea"
+    ).forEach(field => {
         field.required = false;
     });
 
+
     if (type === "technical") {
+
         document.getElementById("languages").required = true;
         document.getElementById("technical_skills").required = true;
         document.getElementById("projects").required = true;
+
     }
 
+
     if (type === "hr") {
+
         document.getElementById("career_goal").required = true;
         document.getElementById("strengths").required = true;
+
     }
+
 }
+
 
 function getValue(id) {
     return document.getElementById(id).value.trim();
 }
 
+
 form.addEventListener("submit", async event => {
+
     event.preventDefault();
 
     errorMessage.classList.add("d-none");
 
+
     if (!selectedType) {
+
         showError("Please select an interview type.");
+
         return;
     }
 
+
     startBtn.disabled = true;
+
     buttonText.style.display = "none";
+
     buttonLoading.style.display = "inline";
+
 
     let details = {
         name: getValue("name"),
         role: getValue("role")
     };
 
+
     if (selectedType === "technical") {
+
         details = {
             ...details,
             languages: getValue("languages"),
@@ -604,7 +1140,9 @@ form.addEventListener("submit", async event => {
             technologies: getValue("technologies"),
             experience: getValue("experience")
         };
+
     } else {
+
         details = {
             ...details,
             career_goal: getValue("career_goal"),
@@ -615,49 +1153,91 @@ form.addEventListener("submit", async event => {
             achievements: getValue("achievements"),
             interests: getValue("interests")
         };
+
     }
 
+
     try {
-        const response = await fetch(`${API_BASE}/api/interview/start`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                interview_type: selectedType,
-                details: details
-            })
-        });
+
+        const response =
+            await fetch(`${API_BASE}/api/interview/start`, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+
+                body: JSON.stringify({
+                    interview_type: selectedType,
+                    details: details
+                })
+
+            });
+
 
         const data = await response.json();
 
+
         if (!response.ok) {
+
             if (response.status === 401) {
+
                 localStorage.removeItem("careerforge_token");
-                window.location.href = "login.html?redirect=interview-setup.html";
+
+                window.location.href =
+                    "login.html?redirect=interview-setup.html";
+
                 return;
             }
 
-            throw new Error(data.message || "Unable to start interview.");
+            throw new Error(
+                data.message || "Unable to start interview."
+            );
         }
 
-        localStorage.setItem("careerforge_interview_id", data.interview_id);
-        localStorage.setItem("careerforge_interview_type", selectedType);
+
+        localStorage.setItem(
+            "careerforge_interview_id",
+            data.interview_id
+        );
+
+        localStorage.setItem(
+            "careerforge_interview_type",
+            selectedType
+        );
+
 
         window.location.href = "interview.html";
 
+
     } catch (error) {
+
         showError(error.message);
+
         startBtn.disabled = false;
+
         buttonText.style.display = "inline";
+
         buttonLoading.style.display = "none";
+
     }
+
 });
 
+
 function showError(message) {
+
     errorMessage.textContent = message;
+
     errorMessage.classList.remove("d-none");
+
+    errorMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
 }
 </script>
 

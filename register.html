@@ -3,351 +3,1387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerForge AI - Register</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Register | CareerForge AI</title>
+
+    <meta name="description"
+          content="Create your CareerForge AI account and start personalized AI-powered placement preparation.">
+
+    <meta name="keywords"
+          content="CareerForge AI register, AI placement preparation, interview preparation, career preparation">
+
+    <meta name="author" content="William James">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+          rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg,#eef2ff,#ffffff,#f5f3ff);
+            background: #f8f9fc;
+            color: #172033;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.08);
         }
 
         .brand-icon {
             width: 44px;
             height: 44px;
             border-radius: 13px;
-            background: #4f46e5;
-            color: white;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 21px;
+            box-shadow: 0 8px 22px rgba(79, 70, 229, 0.25);
         }
+
+        .brand-name {
+            color: #172033;
+        }
+
+        /* =========================================
+           REGISTER HERO
+        ========================================= */
+
+        .register-section {
+            position: relative;
+            min-height: calc(100vh - 73px);
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 12%,
+                    rgba(99, 102, 241, 0.16),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 8% 85%,
+                    rgba(124, 58, 237, 0.12),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #ffffff 55%,
+                    #f5f3ff
+                );
+        }
+
+        .register-section::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.07);
+            filter: blur(15px);
+            top: -170px;
+            right: -100px;
+        }
+
+        .register-section::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.06);
+            filter: blur(20px);
+            bottom: -130px;
+            left: -80px;
+        }
+
+        .register-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================================
+           REGISTER CARD
+        ========================================= */
 
         .register-card {
-            border: 0;
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 26px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.09);
-        }
-
-        .form-control {
-            min-height: 50px;
-            border-radius: 12px;
-        }
-
-        .form-control:focus {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 .2rem rgba(79,70,229,.12);
-        }
-
-        .btn-primary {
-            background: #4f46e5;
-            border-color: #4f46e5;
-        }
-
-        .btn-primary:hover {
-            background: #4338ca;
-            border-color: #4338ca;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                0 25px 70px rgba(79, 70, 229, 0.11);
+            backdrop-filter: blur(14px);
         }
 
         .register-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-            background: #eef2ff;
+            width: 76px;
+            height: 76px;
+            border-radius: 22px;
+
+            background: linear-gradient(
+                135deg,
+                #eef2ff,
+                #f5f3ff
+            );
+
             color: #4f46e5;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 32px;
+
+            box-shadow:
+                0 12px 30px rgba(79, 70, 229, 0.08);
+        }
+
+        .register-badge {
+            color: #4f46e5;
+            background: #eef2ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+        }
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-label {
+            color: #263044;
+        }
+
+        .form-control,
+        .form-select {
+            min-height: 52px;
+            border-radius: 12px;
+            border-color: #dee2e6;
+            padding: 12px 15px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 0.2rem rgba(79, 70, 229, 0.12);
+        }
+
+        .form-check-input {
+            border-color: #cbd5e1;
+        }
+
+        .form-check-input:checked {
+            background-color: #4f46e5;
+            border-color: #4f46e5;
+        }
+
+        .form-check-input:focus {
+            box-shadow:
+                0 0 0 0.2rem rgba(79, 70, 229, 0.12);
+        }
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #6366f1
+            );
+
+            border: none;
+
+            box-shadow:
+                0 10px 25px rgba(79, 70, 229, 0.20);
+
+            transition: 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(
+                135deg,
+                #4338ca,
+                #4f46e5
+            );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(79, 70, 229, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           INFO SIDE
+        ========================================= */
+
+        .benefit-card {
+            border: 1px solid rgba(79, 70, 229, 0.08);
+            background: rgba(255, 255, 255, 0.70);
+            border-radius: 18px;
+            transition: 0.25s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            background: #fff;
+            box-shadow:
+                0 15px 35px rgba(79, 70, 229, 0.08);
+        }
+
+        .benefit-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            background: #eef2ff;
+            color: #4f46e5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================================
+           PORTFOLIO SECTION
+        ========================================= */
+
+        .portfolio-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e1b4b
+                );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-section::before {
+            content: "";
+            position: absolute;
+
+            width: 320px;
+            height: 320px;
+
+            border-radius: 50%;
+
+            background: rgba(99, 102, 241, 0.14);
+
+            filter: blur(45px);
+
+            right: -100px;
+            top: -130px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            z-index: 1;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            background: rgba(255, 255, 255, 0.06);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .portfolio-link {
+            transition: 0.25s ease;
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .portfolio-arrow {
+            transition: transform 0.25s ease;
+        }
+
+        .portfolio-link:hover .portfolio-arrow {
+            transform: translateX(5px);
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: #0f172a;
+        }
+
+        .footer-link {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 767.98px) {
+
+            .register-section {
+                min-height: auto;
+            }
+
+            .register-card {
+                border-radius: 22px;
+            }
+
         }
     </style>
 </head>
 
 <body>
 
-<div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
-    <div class="col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
+<nav class="navbar sticky-top py-3">
 
-        <div class="text-center mb-4">
-            <a href="index.html" class="text-decoration-none text-dark">
-                <div class="d-flex justify-content-center align-items-center gap-2">
-                    <div class="brand-icon">
-                        <i class="bi bi-stars"></i>
-                    </div>
-                    <h4 class="fw-bold mb-0">CareerForge AI</h4>
-                </div>
-            </a>
-        </div>
+    <div class="container">
 
-        <div class="card register-card p-4 p-md-5">
+        <a
+            href="index.html"
+            class="text-decoration-none d-flex align-items-center gap-2">
 
-            <div class="text-center mb-4">
-                <div class="register-icon mx-auto mb-3">
-                    <i class="bi bi-person-plus"></i>
-                </div>
-
-                <h2 class="fw-bold">
-                    Create Your Account
-                </h2>
-
-                <p class="text-secondary mb-0">
-                    Start your AI-powered placement preparation.
-                </p>
+            <div class="brand-icon">
+                <i class="bi bi-stars"></i>
             </div>
 
-            <div id="message"></div>
+            <div>
 
-            <form id="registerForm">
-
-                <div class="row g-3">
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Full Name
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            placeholder="Enter your name"
-                            required
-                        >
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Phone Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            class="form-control"
-                            id="phoneno"
-                            placeholder="Enter phone number"
-                            required
-                        >
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label fw-semibold">
-                            Email
-                        </label>
-
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            placeholder="Enter your email"
-                            required
-                        >
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Country
-                        </label>
-
-                        <select
-                            class="form-select form-control"
-                            id="country"
-                            required
-                        >
-                            <option value="">Select Country</option>
-                            <option value="India">India</option>
-                            <option value="United States">United States</option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Singapore">Singapore</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="Minimum 6 characters"
-                            minlength="6"
-                            required
-                        >
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label fw-semibold">
-                            Confirm Password
-                        </label>
-
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="confirmPassword"
-                            placeholder="Confirm your password"
-                            minlength="6"
-                            required
-                        >
-                    </div>
-
+                <div class="brand-name fw-bold">
+                    CareerForge AI
                 </div>
 
-                <div class="form-check mt-4">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="terms"
-                        required
-                    >
+                <small class="text-secondary">
+                    AI Placement Preparation
+                </small>
 
-                    <label class="form-check-label text-secondary" for="terms">
-                        I agree to use CareerForge AI for placement preparation.
-                    </label>
-                </div>
+            </div>
 
-                <button
-                    type="submit"
-                    class="btn btn-primary btn-lg w-100 rounded-3 mt-4"
-                    id="registerBtn"
-                >
-                    <span id="registerText">
-                        Create Account
-                    </span>
+        </a>
 
-                    <span
-                        id="registerLoader"
-                        class="spinner-border spinner-border-sm d-none"
-                    ></span>
-                </button>
 
-            </form>
+        <a
+            href="index.html"
+            class="btn btn-outline-primary rounded-3 px-3">
 
-            <div class="text-center mt-4">
-                <span class="text-secondary">
-                    Already have an account?
+            <i class="bi bi-arrow-left me-1"></i>
+
+            <span class="d-none d-sm-inline">
+                Back to Home
+            </span>
+
+            <span class="d-sm-none">
+                Home
+            </span>
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     REGISTER SECTION
+========================================= -->
+
+<section class="register-section py-5">
+
+    <div class="container register-content">
+
+        <div class="row align-items-center justify-content-center g-5">
+
+            <!-- =================================
+                 LEFT CONTENT
+            ================================= -->
+
+            <div class="col-xl-4 d-none d-lg-block">
+
+                <span class="badge register-badge rounded-pill px-3 py-2 mb-3">
+
+                    <i class="bi bi-stars me-1"></i>
+
+                    START YOUR JOURNEY
+
                 </span>
 
-                <a
-                    href="login.html"
-                    class="text-primary fw-semibold text-decoration-none"
-                >
-                    Login
-                </a>
+
+                <h1 class="display-5 fw-bold mb-3">
+
+                    Build your
+                    <span class="text-primary">
+                        career with confidence.
+                    </span>
+
+                </h1>
+
+
+                <p class="lead text-secondary mb-4">
+
+                    Create your CareerForge AI account and
+                    unlock personalized tools designed to help
+                    you prepare for your placement journey.
+
+                </p>
+
+
+                <div class="d-grid gap-3">
+
+                    <!-- BENEFIT 1 -->
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+
+                                <i class="bi bi-robot"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    AI-Powered Practice
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+
+                                    Practice personalized
+                                    technical and HR interviews.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BENEFIT 2 -->
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+
+                                <i class="bi bi-bullseye"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Personalized Preparation
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+
+                                    Prepare according to your
+                                    skills, projects and goals.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BENEFIT 3 -->
+
+                    <div class="benefit-card p-3">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div class="benefit-icon flex-shrink-0">
+
+                                <i class="bi bi-graph-up-arrow"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Grow Your Confidence
+                                </h6>
+
+                                <p class="small text-secondary mb-0">
+
+                                    Practice consistently and
+                                    become interview ready.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
 
-        <div class="text-center mt-4">
-            <a
-                href="index.html"
-                class="text-secondary text-decoration-none small"
-            >
-                <i class="bi bi-arrow-left me-1"></i>
-                Back to Home
-            </a>
+            <!-- =================================
+                 REGISTER CARD
+            ================================= -->
+
+            <div class="col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
+
+                <div class="card register-card p-4 p-md-5">
+
+                    <!-- HEADER -->
+
+                    <div class="text-center mb-4">
+
+                        <div class="register-icon mx-auto mb-3">
+
+                            <i class="bi bi-person-plus"></i>
+
+                        </div>
+
+
+                        <span class="badge register-badge rounded-pill px-3 py-2 mb-3">
+
+                            CREATE ACCOUNT
+
+                        </span>
+
+
+                        <h2 class="fw-bold mb-2">
+                            Create Your Account
+                        </h2>
+
+
+                        <p class="text-secondary mb-0">
+
+                            Start your AI-powered placement
+                            preparation journey.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div id="message"></div>
+
+
+                    <!-- FORM -->
+
+                    <form id="registerForm">
+
+                        <div class="row g-3">
+
+                            <!-- FULL NAME -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="name"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-person me-1 text-primary"></i>
+
+                                    Full Name
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="name"
+                                    placeholder="Enter your name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="phoneno"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-telephone me-1 text-primary"></i>
+
+                                    Phone Number
+
+                                </label>
+
+
+                                <input
+                                    type="tel"
+                                    class="form-control"
+                                    id="phoneno"
+                                    placeholder="Enter phone number"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-12">
+
+                                <label
+                                    for="email"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-envelope me-1 text-primary"></i>
+
+                                    Email Address
+
+                                </label>
+
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    placeholder="Enter your email"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- COUNTRY -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="country"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-globe2 me-1 text-primary"></i>
+
+                                    Country
+
+                                </label>
+
+
+                                <select
+                                    class="form-select"
+                                    id="country"
+                                    required>
+
+                                    <option value="">
+                                        Select Country
+                                    </option>
+
+                                    <option value="India">
+                                        India
+                                    </option>
+
+                                    <option value="United States">
+                                        United States
+                                    </option>
+
+                                    <option value="United Kingdom">
+                                        United Kingdom
+                                    </option>
+
+                                    <option value="Canada">
+                                        Canada
+                                    </option>
+
+                                    <option value="Australia">
+                                        Australia
+                                    </option>
+
+                                    <option value="Singapore">
+                                        Singapore
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- PASSWORD -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="password"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-lock me-1 text-primary"></i>
+
+                                    Password
+
+                                </label>
+
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Minimum 6 characters"
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- CONFIRM PASSWORD -->
+
+                            <div class="col-12">
+
+                                <label
+                                    for="confirmPassword"
+                                    class="form-label fw-semibold">
+
+                                    <i class="bi bi-shield-lock me-1 text-primary"></i>
+
+                                    Confirm Password
+
+                                </label>
+
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="confirmPassword"
+                                    placeholder="Confirm your password"
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TERMS -->
+
+                        <div class="form-check mt-4">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="terms"
+                                required
+                            >
+
+
+                            <label
+                                class="form-check-label text-secondary"
+                                for="terms">
+
+                                I agree to use CareerForge AI
+                                for placement preparation.
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- REGISTER BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100 rounded-3 mt-4"
+                            id="registerBtn">
+
+                            <span id="registerText">
+
+                                <i class="bi bi-person-plus me-2"></i>
+
+                                Create CareerForge Account
+
+                            </span>
+
+
+                            <span
+                                id="registerLoader"
+                                class="d-none">
+
+                                <span
+                                    class="spinner-border spinner-border-sm me-2"
+                                    role="status">
+                                </span>
+
+                                Creating account...
+
+                            </span>
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- LOGIN -->
+
+                    <div class="text-center mt-4 pt-3 border-top">
+
+                        <span class="text-secondary">
+                            Already have an account?
+                        </span>
+
+
+                        <a
+                            href="login.html"
+                            class="text-primary fw-semibold text-decoration-none">
+
+                            Login
+
+                            <i class="bi bi-arrow-right ms-1"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY NOTE -->
+
+                <div class="text-center mt-3">
+
+                    <small class="text-secondary">
+
+                        <i class="bi bi-shield-check text-success me-1"></i>
+
+                        Your account information is securely handled.
+
+                    </small>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-</div>
+</section>
+
+
+<!-- =========================================
+     PORTFOLIO SECTION
+========================================= -->
+
+<section class="portfolio-section py-5">
+
+    <div class="container py-4">
+
+        <div class="portfolio-card rounded-4 p-4 p-md-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <span class="badge bg-primary rounded-pill mb-3">
+
+                        PROJECT BY WILLIAM JAMES
+
+                    </span>
+
+
+                    <h2 class="text-white fw-bold mb-3">
+
+                        Explore more of my work
+
+                    </h2>
+
+
+                    <p class="text-white-50 lead mb-0">
+
+                        Discover more projects, technical work,
+                        achievements and AI-powered applications
+                        developed by William James.
+
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <a
+                        href="https://williamjames.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="portfolio-link btn btn-light btn-lg rounded-3 px-4">
+
+                        Visit My Portfolio
+
+                        <i class="bi bi-arrow-up-right ms-2 portfolio-arrow"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- BRAND -->
+
+            <div class="col-lg-5">
+
+                <a
+                    href="index.html"
+                    class="text-decoration-none d-inline-flex align-items-center gap-2 mb-3">
+
+                    <div class="brand-icon">
+
+                        <i class="bi bi-stars"></i>
+
+                    </div>
+
+
+                    <span class="text-white fw-bold fs-5">
+
+                        CareerForge AI
+
+                    </span>
+
+                </a>
+
+
+                <p class="text-secondary mb-0">
+
+                    An AI-powered platform designed to help
+                    students and job seekers prepare for interviews,
+                    improve communication and build career confidence.
+
+                </p>
+
+            </div>
+
+
+            <!-- PLATFORM -->
+
+            <div class="col-6 col-lg-3">
+
+                <h6 class="text-white fw-bold mb-3">
+                    Platform
+                </h6>
+
+
+                <div class="d-grid gap-2">
+
+                    <a
+                        href="index.html"
+                        class="footer-link">
+
+                        Home
+
+                    </a>
+
+
+                    <a
+                        href="interview-setup.html"
+                        class="footer-link">
+
+                        AI Interview
+
+                    </a>
+
+
+                    <a
+                        href="index.html#features"
+                        class="footer-link">
+
+                        Features
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="col-6 col-lg-4">
+
+                <h6 class="text-white fw-bold mb-3">
+                    Account
+                </h6>
+
+
+                <div class="d-grid gap-2">
+
+                    <a
+                        href="login.html"
+                        class="footer-link">
+
+                        Login
+
+                    </a>
+
+
+                    <a
+                        href="index.html"
+                        class="footer-link">
+
+                        Back to Home
+
+                    </a>
+
+
+                    <a
+                        href="https://williamjames.netlify.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="footer-link">
+
+                        Developer Portfolio
+
+                        <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary opacity-25 my-4">
+
+
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+
+            <small class="text-secondary">
+
+                © 2026 CareerForge AI. All rights reserved.
+
+            </small>
+
+
+            <small class="text-secondary">
+
+                Built with AI, technology and ambition.
+
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script src="api.js"></script>
-<script>
-const registerForm = document.getElementById("registerForm");
-const message = document.getElementById("message");
-const registerBtn = document.getElementById("registerBtn");
-const registerText = document.getElementById("registerText");
-const registerLoader = document.getElementById("registerLoader");
 
+<script>
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const message =
+    document.getElementById("message");
+
+const registerBtn =
+    document.getElementById("registerBtn");
+
+const registerText =
+    document.getElementById("registerText");
+
+const registerLoader =
+    document.getElementById("registerLoader");
+
+
+/* =========================================
+   REDIRECT IF ALREADY LOGGED IN
+========================================= */
 
 if (localStorage.getItem("token")) {
+
     window.location.href = "index.html";
+
 }
 
+
+/* =========================================
+   MESSAGE
+========================================= */
 
 function showMessage(text, type = "danger") {
+
     message.innerHTML = `
-        <div class="alert alert-${type} rounded-3">
-            ${text}
+
+        <div class="alert alert-${type} rounded-3 d-flex align-items-center gap-2">
+
+            <i class="bi ${
+                type === "success"
+                    ? "bi-check-circle-fill"
+                    : "bi-exclamation-circle-fill"
+            }"></i>
+
+            <div>
+                ${text}
+            </div>
+
         </div>
+
     `;
+
 }
 
 
-registerForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
+/* =========================================
+   REGISTER
+========================================= */
 
-    const name = document.getElementById("name").value.trim();
-    const phoneno = document.getElementById("phoneno").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const country = document.getElementById("country").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+registerForm.addEventListener(
+    "submit",
+    async function(event) {
 
-    if (password !== confirmPassword) {
-        showMessage("Passwords do not match.");
-        return;
-    }
+        event.preventDefault();
 
-    if (password.length < 6) {
-        showMessage("Password must contain at least 6 characters.");
-        return;
-    }
 
-    registerBtn.disabled = true;
-    registerText.classList.add("d-none");
-    registerLoader.classList.remove("d-none");
-    message.innerHTML = "";
+        const name =
+            document.getElementById("name")
+                .value
+                .trim();
 
-    try {
-        const response = await fetch(`${API_BASE}/api/auth/register`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                phoneno: phoneno,
-                country: country,
-                password: password
-            })
-        });
 
-        const data = await response.json();
+        const phoneno =
+            document.getElementById("phoneno")
+                .value
+                .trim();
 
-        if (!data.success) {
-            throw new Error(data.message || "Registration failed.");
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+
+        const country =
+            document.getElementById("country")
+                .value;
+
+
+        const password =
+            document.getElementById("password")
+                .value;
+
+
+        const confirmPassword =
+            document.getElementById("confirmPassword")
+                .value;
+
+
+        /* PASSWORD VALIDATION */
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "Passwords do not match."
+            );
+
+            return;
+
         }
 
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
 
-        showMessage(
-            "Account created successfully. Redirecting...",
-            "success"
-        );
+        if (password.length < 6) {
 
-        setTimeout(function() {
-            window.location.href = "index.html";
-        }, 800);
+            showMessage(
+                "Password must contain at least 6 characters."
+            );
 
-    } catch (error) {
-        showMessage(error.message);
+            return;
 
-        registerBtn.disabled = false;
-        registerText.classList.remove("d-none");
-        registerLoader.classList.add("d-none");
+        }
+
+
+        /* LOADING STATE */
+
+        registerBtn.disabled = true;
+
+        registerText.classList.add("d-none");
+
+        registerLoader.classList.remove("d-none");
+
+        message.innerHTML = "";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE}/api/auth/register`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name: name,
+
+                            email: email,
+
+                            phoneno: phoneno,
+
+                            country: country,
+
+                            password: password
+
+                        })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!data.success) {
+
+                throw new Error(
+                    data.message ||
+                    "Registration failed."
+                );
+
+            }
+
+
+            /* SAVE USER DATA */
+
+            localStorage.setItem(
+                "token",
+                data.token
+            );
+
+
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
+
+
+            /* SUCCESS */
+
+            showMessage(
+                "Account created successfully. Redirecting...",
+                "success"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "index.html";
+
+                },
+                800
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            showMessage(
+                error.message ||
+                "Unable to create account."
+            );
+
+
+            registerBtn.disabled = false;
+
+            registerText.classList.remove(
+                "d-none"
+            );
+
+            registerLoader.classList.add(
+                "d-none"
+            );
+
+        }
+
     }
-});
+);
+
 </script>
 
 </body>

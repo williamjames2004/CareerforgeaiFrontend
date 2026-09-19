@@ -6,505 +6,1540 @@
 
     <title>Interview Result | CareerForge AI</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    <meta name="description"
+          content="View your completed CareerForge AI interview session, candidate information, interview questions and recording status.">
+
+    <meta name="keywords"
+          content="CareerForge AI interview result, AI interview, mock interview result, technical interview, HR interview">
+
+    <meta name="author" content="William James">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+          rel="stylesheet">
 
     <style>
-        body {
-            min-height: 100vh;
-            background: #f5f7fb;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .result-header {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        body {
+            min-height: 100vh;
+            background: #f8f9fc;
+            color: #172033;
+        }
+
+        .navbar {
+            backdrop-filter: blur(14px);
+            background: rgba(255,255,255,.94);
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
+            box-shadow: 0 8px 22px rgba(79,70,229,.25);
+        }
+
+        .page-background {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 10%,rgba(99,102,241,.13),transparent 28%),
+                radial-gradient(circle at 5% 70%,rgba(124,58,237,.08),transparent 28%),
+                linear-gradient(135deg,#eef2ff,#ffffff 55%,#f5f3ff);
+        }
+
+        .page-background::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(79,70,229,.06);
+            filter: blur(20px);
+            top: -180px;
+            right: -100px;
+        }
+
+        .page-background::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(124,58,237,.05);
+            filter: blur(20px);
+            bottom: -140px;
+            left: -100px;
+        }
+
+        .result-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg,#4f46e5,#7c3aed);
             color: white;
+            border: 0;
+            box-shadow: 0 25px 65px rgba(79,70,229,.22);
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            right: -80px;
+            top: -130px;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.05);
+            left: -80px;
+            bottom: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.18);
+            font-size: 30px;
         }
 
         .result-card {
-            border: 0;
-            border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255,255,255,.9);
+            box-shadow: 0 20px 55px rgba(79,70,229,.09);
+        }
+
+        .success-card {
+            background: linear-gradient(135deg,#f0fdf4,#ecfdf5);
+            border: 1px solid #bbf7d0;
+        }
+
+        .success-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            color: #16a34a;
+            font-size: 22px;
+            flex-shrink: 0;
         }
 
         .info-card {
             border: 0;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 22px;
+            background: rgba(255,255,255,.95);
+            box-shadow: 0 18px 50px rgba(79,70,229,.08);
         }
 
-        .info-icon {
-            width: 45px;
-            height: 45px;
+        .section-icon {
+            width: 46px;
+            height: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 13px;
             background: #eef2ff;
             color: #4f46e5;
             font-size: 20px;
+            flex-shrink: 0;
         }
 
-        .question-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            transition: 0.2s ease;
-        }
-
-        .question-card:hover {
-            border-color: #c7d2fe;
-            transform: translateY(-2px);
-        }
-
-        .question-number {
-            min-width: 38px;
-            height: 38px;
-            border-radius: 10px;
+        .info-icon {
+            width: 46px;
+            height: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 13px;
             background: #eef2ff;
             color: #4f46e5;
-            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-item {
+            padding: 18px;
+            border: 1px solid #edf0f7;
+            border-radius: 16px;
+            background: #fcfcff;
+            height: 100%;
         }
 
         .status-badge {
             background: #dcfce7;
             color: #166534;
+            font-weight: 700;
+        }
+
+        .audio-badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+
+        .question-card {
+            border: 1px solid #e7e9f2;
+            border-radius: 17px;
+            background: #fff;
+            transition: .25s ease;
+        }
+
+        .question-card:hover {
+            border-color: #c7d2fe;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(79,70,229,.08);
+        }
+
+        .question-number {
+            min-width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg,#eef2ff,#f5f3ff);
+            color: #4f46e5;
+            font-weight: 800;
+        }
+
+        .question-label {
+            color: #4f46e5;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            text-transform: uppercase;
         }
 
         .empty-state {
-            min-height: 350px;
+            min-height: 300px;
+            border: 1px dashed #dfe3ee;
+            border-radius: 18px;
+            background: #fafbff;
         }
 
-        .loading-spinner {
-            width: 45px;
-            height: 45px;
+        .error-card {
+            border: 1px solid #fecaca;
+            background: #fff7f7;
+        }
+
+        .error-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fee2e2;
+            color: #dc2626;
+            flex-shrink: 0;
+        }
+
+        .loading-section {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-box {
+            text-align: center;
+        }
+
+        .loading-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 18px;
+            background: #eef2ff;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin: 0 auto 20px;
+        }
+
+        .interview-id-box {
+            background: #f8f9fc;
+            border: 1px solid #e8ebf2;
+            border-radius: 12px;
+            word-break: break-all;
+        }
+
+        .portfolio-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg,#111827,#1e1b4b);
+        }
+
+        .portfolio-section::before {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: rgba(99,102,241,.13);
+            filter: blur(45px);
+            right: -100px;
+            top: -130px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .portfolio-arrow {
+            transition: transform .25s ease;
+        }
+
+        .portfolio-link:hover .portfolio-arrow {
+            transform: translateX(5px) translateY(-2px);
+        }
+
+        .footer-link {
+            text-decoration: none;
+            transition: .2s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff !important;
+        }
+
+        @media (max-width: 576px) {
+            .hero-icon {
+                width: 58px;
+                height: 58px;
+                font-size: 25px;
+            }
+
+            .info-item {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="result-header py-4">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-                <div>
-                    <div class="small opacity-75 mb-1">
-                        CAREERFORGE AI
-                    </div>
-                    <h1 class="h3 fw-bold mb-0">
-                        Interview Result
-                    </h1>
-                </div>
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top shadow-sm">
 
-                <div class="d-none d-md-block">
-                    <i class="bi bi-clipboard2-check fs-1 opacity-75"></i>
-                </div>
+        <div class="container py-2">
+
+            <a href="index.html"
+               class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+               aria-label="CareerForge AI Home">
+
+                <span class="brand-icon rounded-3 d-flex
+                             align-items-center justify-content-center text-white">
+
+                    <i class="bi bi-stars fs-5"></i>
+
+                </span>
+
+                <span class="fs-5">
+                    CareerForge AI
+                </span>
+
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+
+                <span class="d-none d-md-inline small text-secondary">
+                    Interview Result
+                </span>
+
+                <a href="index.html"
+                   class="btn btn-light border rounded-3 px-3">
+
+                    <i class="bi bi-house me-1"></i>
+                    Home
+
+                </a>
+
             </div>
-        </div>
-    </header>
 
-    <main class="container py-5">
-
-        <!-- Loading -->
-        <div id="loadingState" class="text-center py-5">
-            <div class="spinner-border text-primary loading-spinner mb-3"
-                 role="status"></div>
-
-            <h5 class="fw-semibold">
-                Loading your interview result...
-            </h5>
-
-            <p class="text-muted mb-0">
-                Please wait while we prepare your result.
-            </p>
         </div>
 
-        <!-- Error -->
-        <div id="errorState" class="d-none">
-            <div class="alert alert-danger result-card p-4">
+    </nav>
+</header>
+
+
+<main>
+
+<section class="page-background">
+
+    <div class="container result-wrapper py-4 py-md-5">
+
+        <!-- LOADING -->
+        <div id="loadingState"
+             class="loading-section">
+
+            <div class="loading-box">
+
+                <div class="loading-icon">
+
+                    <i class="bi bi-stars"></i>
+
+                </div>
+
+                <div class="spinner-border text-primary mb-3"
+                     role="status"
+                     aria-label="Loading">
+                </div>
+
+                <h5 class="fw-bold">
+                    Loading your interview result...
+                </h5>
+
+                <p class="text-secondary mb-0">
+                    Please wait while CareerForge AI prepares your result.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ERROR -->
+        <div id="errorState"
+             class="d-none py-4">
+
+            <div class="error-card result-card
+                        rounded-4 p-4 p-md-5">
+
                 <div class="d-flex align-items-start gap-3">
-                    <i class="bi bi-exclamation-triangle-fill fs-3"></i>
 
-                    <div>
-                        <h5 class="fw-bold">
+                    <div class="error-icon">
+
+                        <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+
+                    </div>
+
+                    <div class="flex-grow-1">
+
+                        <h4 class="fw-bold mb-2">
                             Unable to load interview result
-                        </h5>
-
-                        <p id="errorMessage" class="mb-3">
-                            Something went wrong.
-                        </p>
-
-                        <button class="btn btn-danger"
-                                onclick="loadResult()">
-                            <i class="bi bi-arrow-clockwise me-2"></i>
-                            Try Again
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Result Content -->
-        <div id="resultContent" class="d-none">
-
-            <!-- Success message -->
-            <div class="alert alert-success result-card border-0 mb-4">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="fs-3">
-                        <i class="bi bi-check-circle-fill"></i>
-                    </div>
-
-                    <div>
-                        <h5 class="fw-bold mb-1">
-                            Interview Completed
-                        </h5>
-
-                        <p class="mb-0">
-                            Your interview session has been successfully completed.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Candidate -->
-            <div class="info-card p-4 mb-4">
-
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div>
-                        <h4 class="fw-bold mb-1">
-                            Candidate Information
                         </h4>
 
-                        <p class="text-muted mb-0">
-                            Details associated with this interview
+                        <p id="errorMessage"
+                           class="text-secondary mb-4">
+
+                            Something went wrong.
+
                         </p>
-                    </div>
 
-                    <span class="badge status-badge px-3 py-2 rounded-pill">
-                        Completed
-                    </span>
-                </div>
+                        <div class="d-flex flex-wrap gap-2">
 
-                <div class="row g-4">
+                            <button class="btn btn-danger rounded-3"
+                                    onclick="loadResult()">
 
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="info-icon">
-                                <i class="bi bi-person"></i>
-                            </div>
+                                <i class="bi bi-arrow-clockwise me-2"></i>
+                                Try Again
 
-                            <div>
-                                <small class="text-muted d-block">
-                                    Candidate Name
-                                </small>
+                            </button>
 
-                                <strong id="candidateName">
-                                    -
-                                </strong>
-                            </div>
+                            <a href="index.html"
+                               class="btn btn-light border rounded-3">
+
+                                <i class="bi bi-house me-2"></i>
+                                Go Home
+
+                            </a>
+
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="info-icon">
-                                <i class="bi bi-briefcase"></i>
-                            </div>
-
-                            <div>
-                                <small class="text-muted d-block">
-                                    Interview Type
-                                </small>
-
-                                <strong id="interviewType">
-                                    -
-                                </strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="info-icon">
-                                <i class="bi bi-question-circle"></i>
-                            </div>
-
-                            <div>
-                                <small class="text-muted d-block">
-                                    Total Questions
-                                </small>
-
-                                <strong id="totalQuestions">
-                                    -
-                                </strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="info-icon">
-                                <i class="bi bi-mic"></i>
-                            </div>
-
-                            <div>
-                                <small class="text-muted d-block">
-                                    Interview Audio
-                                </small>
-
-                                <strong id="audioStatus">
-                                    -
-                                </strong>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
+
             </div>
 
-            <!-- Interview Questions -->
-            <div class="info-card p-4">
+        </div>
 
-                <div class="mb-4">
-                    <h4 class="fw-bold mb-1">
-                        Interview Questions
-                    </h4>
 
-                    <p class="text-muted mb-0">
-                        Questions used during your interview session
-                    </p>
+        <!-- RESULT CONTENT -->
+        <div id="resultContent"
+             class="d-none">
+
+
+            <!-- HERO -->
+            <div class="hero-card rounded-4 p-4 p-md-5 mb-4">
+
+                <div class="hero-content">
+
+                    <div class="row align-items-center g-4">
+
+                        <div class="col-lg-8">
+
+                            <div class="d-flex align-items-center
+                                        gap-3 mb-4">
+
+                                <div class="hero-icon">
+
+                                    <i class="bi bi-clipboard2-check"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <div class="small fw-bold
+                                                opacity-75 mb-1">
+
+                                        CAREERFORGE AI
+
+                                    </div>
+
+                                    <h1 class="display-6 fw-bold mb-0">
+
+                                        Interview Result
+
+                                    </h1>
+
+                                </div>
+
+                            </div>
+
+                            <p class="lead mb-0 text-white-50">
+
+                                Your AI-powered interview session has
+                                been successfully completed. Review the
+                                questions from your practice session below.
+
+                            </p>
+
+                        </div>
+
+                        <div class="col-lg-4 text-lg-end">
+
+                            <span class="badge bg-light text-success
+                                         rounded-pill px-3 py-2 fs-6">
+
+                                <i class="bi bi-check-circle-fill me-1"></i>
+                                Completed
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
+            </div>
+
+
+            <!-- SUCCESS MESSAGE -->
+            <div class="success-card result-card
+                        rounded-4 p-4 mb-4">
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <div class="success-icon">
+
+                        <i class="bi bi-check-lg"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h5 class="fw-bold mb-1">
+                            Interview Completed Successfully
+                        </h5>
+
+                        <p class="text-secondary mb-0">
+
+                            Your interview session has been recorded
+                            and the questions have been saved.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CANDIDATE INFORMATION -->
+            <div class="info-card p-4 p-md-5 mb-4">
+
+                <div class="d-flex flex-column flex-sm-row
+                            align-items-sm-center
+                            justify-content-between
+                            gap-3 mb-4">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="section-icon">
+
+                            <i class="bi bi-person-vcard"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="h4 fw-bold mb-1">
+                                Candidate Information
+                            </h2>
+
+                            <p class="text-secondary mb-0">
+                                Details associated with this interview
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge status-badge
+                                 rounded-pill px-3 py-2">
+
+                        <i class="bi bi-check-circle me-1"></i>
+                        Completed
+
+                    </span>
+
+                </div>
+
+
+                <div class="row g-3">
+
+
+                    <!-- NAME -->
+                    <div class="col-md-6">
+
+                        <div class="info-item">
+
+                            <div class="d-flex
+                                        align-items-center gap-3">
+
+                                <div class="info-icon">
+
+                                    <i class="bi bi-person"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small class="text-secondary
+                                                 d-block mb-1">
+
+                                        Candidate Name
+
+                                    </small>
+
+                                    <strong id="candidateName">
+                                        -
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TYPE -->
+                    <div class="col-md-6">
+
+                        <div class="info-item">
+
+                            <div class="d-flex
+                                        align-items-center gap-3">
+
+                                <div class="info-icon">
+
+                                    <i class="bi bi-briefcase"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small class="text-secondary
+                                                 d-block mb-1">
+
+                                        Interview Type
+
+                                    </small>
+
+                                    <strong id="interviewType">
+                                        -
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUESTIONS -->
+                    <div class="col-md-6">
+
+                        <div class="info-item">
+
+                            <div class="d-flex
+                                        align-items-center gap-3">
+
+                                <div class="info-icon">
+
+                                    <i class="bi bi-question-circle"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small class="text-secondary
+                                                 d-block mb-1">
+
+                                        Total Questions
+
+                                    </small>
+
+                                    <strong id="totalQuestions">
+                                        -
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AUDIO -->
+                    <div class="col-md-6">
+
+                        <div class="info-item">
+
+                            <div class="d-flex
+                                        align-items-center gap-3">
+
+                                <div class="info-icon">
+
+                                    <i class="bi bi-mic"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small class="text-secondary
+                                                 d-block mb-1">
+
+                                        Interview Audio
+
+                                    </small>
+
+                                    <strong id="audioStatus">
+                                        -
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+            <div class="info-card p-4 p-md-5 mb-4">
+
+                <div class="d-flex align-items-center gap-3 mb-4">
+
+                    <div class="section-icon">
+
+                        <i class="bi bi-list-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="h4 fw-bold mb-1">
+                            Interview Questions
+                        </h2>
+
+                        <p class="text-secondary mb-0">
+                            Questions used during your interview session
+                        </p>
+
+                    </div>
+
+                </div>
+
 
                 <div id="questionsContainer">
                 </div>
 
             </div>
 
-            <!-- Footer -->
-            <div class="text-center mt-4">
-                <small class="text-muted">
-                    Interview ID:
-                    <span id="interviewId"></span>
-                </small>
+
+            <!-- INTERVIEW ID -->
+            <div class="info-card p-4 mb-4">
+
+                <div class="d-flex align-items-start gap-3">
+
+                    <div class="section-icon">
+
+                        <i class="bi bi-fingerprint"></i>
+
+                    </div>
+
+                    <div class="flex-grow-1">
+
+                        <h6 class="fw-bold mb-1">
+                            Interview Session ID
+                        </h6>
+
+                        <p class="small text-secondary mb-2">
+                            Keep this ID if you need to reference
+                            this interview session.
+                        </p>
+
+                        <div class="interview-id-box
+                                    p-3 small font-monospace"
+                             id="interviewId">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+            <div class="text-center py-2">
+
+                <a href="interview-setup.html"
+                   class="btn btn-primary btn-lg rounded-3 px-4">
+
+                    <i class="bi bi-arrow-repeat me-2"></i>
+                    Start Another Interview
+
+                </a>
+
+                <a href="index.html"
+                   class="btn btn-light border btn-lg rounded-3 px-4 ms-2">
+
+                    <i class="bi bi-house me-2"></i>
+                    Back to Home
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section py-5">
+
+    <div class="container py-4">
+
+        <div class="portfolio-card rounded-4 p-4 p-md-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <span class="badge bg-primary rounded-pill mb-3">
+                        PROJECT BY WILLIAM JAMES
+                    </span>
+
+                    <h2 class="text-white fw-bold mb-3">
+                        Explore more of my work
+                    </h2>
+
+                    <p class="text-white-50 lead mb-0">
+
+                        Visit my portfolio to explore my projects,
+                        technical skills, achievements and other
+                        AI and web development work.
+
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+
+                    <a href="https://williamjames.netlify.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="portfolio-link btn btn-light btn-lg
+                              rounded-3 px-4">
+
+                        Visit My Portfolio
+
+                        <i class="bi bi-arrow-up-right ms-2
+                                  portfolio-arrow"></i>
+
+                    </a>
+
+                </div>
+
             </div>
 
         </div>
 
-    </main>
+    </div>
 
-    <script src="api.js"></script>
-    <script>
-        function getInterviewId() {
-            const params = new URLSearchParams(window.location.search);
+</section>
 
-            return (
-                params.get("interview_id") ||
-                params.get("id")
-            );
-        }
+</main>
 
-        function escapeHTML(value) {
-            if (value === null || value === undefined) {
-                return "";
-            }
 
-            return String(value)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
+<!-- FOOTER -->
+<footer class="bg-dark text-secondary">
 
-        function showError(message) {
-            document.getElementById("loadingState")
-                .classList.add("d-none");
+    <div class="container py-5">
 
-            document.getElementById("resultContent")
-                .classList.add("d-none");
+        <div class="row g-4">
 
-            document.getElementById("errorState")
-                .classList.remove("d-none");
 
-            document.getElementById("errorMessage")
-                .textContent = message;
-        }
+            <!-- BRAND -->
+            <div class="col-lg-5">
 
-        function formatInterviewType(type) {
-            if (!type) {
-                return "Interview";
-            }
+                <a href="index.html"
+                   class="text-decoration-none text-white
+                          d-inline-flex align-items-center
+                          gap-2 mb-3">
 
-            return String(type)
-                .replace(/[_-]/g, " ")
-                .replace(/\b\w/g, char => char.toUpperCase());
-        }
+                    <span class="brand-icon rounded-3 d-flex
+                                 align-items-center
+                                 justify-content-center">
 
-        function getCandidateName(candidate) {
-            if (!candidate) {
-                return "Candidate";
-            }
+                        <i class="bi bi-stars text-white"></i>
 
-            return (
-                candidate.name ||
-                candidate.full_name ||
-                candidate.fullName ||
-                candidate.username ||
-                candidate.email ||
-                "Candidate"
-            );
-        }
+                    </span>
 
-        function renderQuestions(questions) {
-            const container =
-                document.getElementById("questionsContainer");
+                    <span class="fw-bold fs-5">
+                        CareerForge AI
+                    </span>
 
-            if (!Array.isArray(questions) || questions.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-5 text-muted">
-                        <i class="bi bi-question-circle fs-1 d-block mb-3"></i>
-                        <p class="mb-0">
-                            No interview questions were found.
-                        </p>
-                    </div>
-                `;
+                </a>
 
-                return;
-            }
+                <p class="small lh-lg mb-0"
+                   style="max-width:500px;">
 
-            container.innerHTML = questions.map((question, index) => {
+                    An AI-powered placement preparation platform
+                    designed to help students practice interviews,
+                    improve communication and build confidence.
 
-                let questionText = question;
+                </p>
 
-                if (typeof question === "object" && question !== null) {
+            </div>
+
+
+            <!-- PLATFORM -->
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Platform
+                </h3>
+
+                <ul class="list-unstyled small">
+
+                    <li class="mb-2">
+
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+
+                            AI Interview
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+
+                            Group Discussion
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+
+                            Communication
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="index.html#features"
+                           class="footer-link text-secondary">
+
+                            Resume Tester
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+            <div class="col-6 col-lg-2">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Account
+                </h3>
+
+                <ul class="list-unstyled small">
+
+                    <li class="mb-2">
+
+                        <a href="login.html"
+                           class="footer-link text-secondary">
+
+                            Login
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a href="register.html"
+                           class="footer-link text-secondary">
+
+                            Register
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="index.html"
+                           class="footer-link text-secondary">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- DEVELOPER -->
+            <div class="col-lg-3">
+
+                <h3 class="h6 text-white fw-bold mb-3">
+                    Developer
+                </h3>
+
+                <p class="small mb-3">
+
+                    Built by William James as an AI-powered
+                    placement preparation project.
+
+                </p>
+
+                <a href="https://williamjames.netlify.app/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-light btn-sm rounded-3">
+
+                    <i class="bi bi-person-badge me-1"></i>
+
+                    William James Portfolio
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between
+                    align-items-md-center gap-2">
+
+            <div class="small">
+                © 2026 CareerForge AI. All rights reserved.
+            </div>
+
+            <div class="small">
+                AI-powered placement & interview preparation
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="api.js"></script>
+
+<script>
+
+function getInterviewId() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return (
+        params.get("interview_id") ||
+        params.get("id")
+    );
+
+}
+
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function showError(message) {
+
+    document
+        .getElementById("loadingState")
+        .classList.add("d-none");
+
+
+    document
+        .getElementById("resultContent")
+        .classList.add("d-none");
+
+
+    document
+        .getElementById("errorState")
+        .classList.remove("d-none");
+
+
+    document
+        .getElementById("errorMessage")
+        .textContent =
+        message;
+
+}
+
+
+function formatInterviewType(type) {
+
+    if (!type) {
+
+        return "Interview";
+
+    }
+
+
+    return String(type)
+        .replace(
+            /[_-]/g,
+            " "
+        )
+        .replace(
+            /\b\w/g,
+            char =>
+                char.toUpperCase()
+        );
+
+}
+
+
+function getCandidateName(candidate) {
+
+    if (!candidate) {
+
+        return "Candidate";
+
+    }
+
+
+    return (
+        candidate.name ||
+        candidate.full_name ||
+        candidate.fullName ||
+        candidate.username ||
+        candidate.email ||
+        "Candidate"
+    );
+
+}
+
+
+function renderQuestions(questions) {
+
+    const container =
+        document.getElementById(
+            "questionsContainer"
+        );
+
+
+    if (
+        !Array.isArray(questions) ||
+        questions.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-state
+                        d-flex
+                        flex-column
+                        align-items-center
+                        justify-content-center
+                        text-center
+                        p-4">
+
+                <div class="section-icon mb-3">
+
+                    <i class="bi bi-question-circle"></i>
+
+                </div>
+
+                <h5 class="fw-bold mb-2">
+                    No interview questions found
+                </h5>
+
+                <p class="text-secondary mb-0">
+
+                    No questions were returned for
+                    this interview session.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        questions.map(
+            (question, index) => {
+
+                let questionText =
+                    question;
+
+
+                if (
+                    typeof question ===
+                    "object" &&
+                    question !== null
+                ) {
+
                     questionText =
                         question.question ||
                         question.text ||
                         question.title ||
-                        JSON.stringify(question);
+                        JSON.stringify(
+                            question
+                        );
+
                 }
 
-                return `
-                    <div class="question-card p-3 mb-3">
-                        <div class="d-flex align-items-start gap-3">
 
-                            <div class="question-number flex-shrink-0">
+                return `
+
+                    <div class="question-card
+                                p-3 p-md-4 mb-3">
+
+                        <div class="d-flex
+                                    align-items-start
+                                    gap-3">
+
+                            <div class="question-number
+                                        flex-shrink-0">
+
                                 ${index + 1}
+
                             </div>
 
-                            <div class="pt-1">
-                                <div class="fw-semibold">
-                                    ${escapeHTML(questionText)}
+
+                            <div class="pt-1 flex-grow-1">
+
+                                <div class="question-label mb-2">
+
+                                    Question ${index + 1}
+
                                 </div>
+
+                                <div class="fw-semibold
+                                            lh-lg">
+
+                                    ${escapeHTML(
+                                        questionText
+                                    )}
+
+                                </div>
+
                             </div>
 
                         </div>
+
                     </div>
+
                 `;
-            }).join("");
-        }
 
-        async function loadResult() {
-
-            const interviewId = getInterviewId();
-
-            if (!interviewId) {
-                showError(
-                    "Interview ID is missing from the URL."
-                );
-
-                return;
             }
+        ).join("");
 
-            document.getElementById("loadingState")
-                .classList.remove("d-none");
+}
 
-            document.getElementById("errorState")
-                .classList.add("d-none");
 
-            document.getElementById("resultContent")
-                .classList.add("d-none");
+async function loadResult() {
 
-            try {
+    const interviewId =
+        getInterviewId();
 
-                const response = await fetch(
-                    `${API_BASE}/api/interview/${encodeURIComponent(interviewId)}/result`,
-                    {
-                        method: "GET",
-                        credentials: "include",
-                        headers: {
-                            "Accept": "application/json"
-                        }
-                    }
-                );
 
-                const data = await response.json();
+    if (!interviewId) {
 
-                if (!response.ok || !data.success) {
-                    throw new Error(
-                        data.error ||
-                        data.message ||
-                        "Failed to load interview result."
-                    );
-                }
-
-                const candidate =
-                    data.candidate || {};
-
-                document.getElementById("candidateName")
-                    .textContent =
-                    getCandidateName(candidate);
-
-                document.getElementById("interviewType")
-                    .textContent =
-                    formatInterviewType(
-                        data.interview_type
-                    );
-
-                document.getElementById("totalQuestions")
-                    .textContent =
-                    data.total_questions ?? 0;
-
-                document.getElementById("audioStatus")
-                    .textContent =
-                    data.audio_available
-                        ? "Available"
-                        : "Not Available";
-
-                document.getElementById("interviewId")
-                    .textContent =
-                    interviewId;
-
-                renderQuestions(data.questions);
-
-                document.getElementById("loadingState")
-                    .classList.add("d-none");
-
-                document.getElementById("resultContent")
-                    .classList.remove("d-none");
-
-            } catch (error) {
-
-                console.error(
-                    "Interview result error:",
-                    error
-                );
-
-                showError(
-                    error.message ||
-                    "Unable to load the interview result."
-                );
-            }
-        }
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            loadResult
+        showError(
+            "Interview ID is missing from the URL."
         );
-    </script>
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("loadingState")
+        .classList.remove("d-none");
+
+
+    document
+        .getElementById("errorState")
+        .classList.add("d-none");
+
+
+    document
+        .getElementById("resultContent")
+        .classList.add("d-none");
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_BASE}/api/interview/${encodeURIComponent(interviewId)}/result`,
+                {
+                    method: "GET",
+
+                    credentials: "include",
+
+                    headers: {
+                        "Accept":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.error ||
+                data.message ||
+                "Failed to load interview result."
+            );
+
+        }
+
+
+        const candidate =
+            data.candidate || {};
+
+
+        document
+            .getElementById("candidateName")
+            .textContent =
+            getCandidateName(
+                candidate
+            );
+
+
+        document
+            .getElementById("interviewType")
+            .textContent =
+            formatInterviewType(
+                data.interview_type
+            );
+
+
+        document
+            .getElementById("totalQuestions")
+            .textContent =
+            data.total_questions ?? 0;
+
+
+        document
+            .getElementById("audioStatus")
+            .textContent =
+            data.audio_available
+                ? "Available"
+                : "Not Available";
+
+
+        document
+            .getElementById("audioStatus")
+            .className =
+            data.audio_available
+                ? "badge audio-badge rounded-pill px-3 py-2"
+                : "";
+
+
+        document
+            .getElementById("interviewId")
+            .textContent =
+            interviewId;
+
+
+        renderQuestions(
+            data.questions
+        );
+
+
+        document
+            .getElementById("loadingState")
+            .classList.add("d-none");
+
+
+        document
+            .getElementById("resultContent")
+            .classList.remove("d-none");
+
+
+    } catch (error) {
+
+        console.error(
+            "Interview result error:",
+            error
+        );
+
+
+        showError(
+            error.message ||
+            "Unable to load the interview result."
+        );
+
+    }
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadResult
+);
+
+</script>
 
 </body>
 </html>
