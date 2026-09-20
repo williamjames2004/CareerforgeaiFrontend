@@ -1888,147 +1888,136 @@ doneButton.addEventListener(
 // --------------------------------------------------
 
 async function loadInterview() {
-
     try {
-
-        const response =
-            await fetch(
-                `${API_BASE}/api/interview/${interviewId}`,
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization":
-                            `Bearer ${token}`
-                    }
+        const response = await fetch(
+            `${API_BASE}/api/interview/${interviewId}`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
                 }
-            );
+            }
+        );
 
+        const data = await response.json();
 
-        const data =
-            await response.json();
-
-
-        if (
-            !response.ok ||
-            !data.success
-        ) {
-
+        if (!response.ok || !data.success) {
             throw new Error(
-                data.message ||
-                "Unable to load interview."
+                data.message || "Unable to load interview."
             );
-
         }
-
 
         if (data.completed) {
-
             window.location.href =
                 `interview-result.html?interview_id=${encodeURIComponent(interviewId)}`;
-
             return;
-
         }
 
+        // --------------------------------------
+        // INTERVIEW TYPE
+        // --------------------------------------
 
-        if (
-            data.interview_type ===
-            "technical"
-        ) {
-
+        if (data.interview_type === "technical") {
             interviewType.innerHTML =
                 '<i class="bi bi-code-slash me-1"></i> TECHNICAL INTERVIEW';
-
         } else {
-
             interviewType.innerHTML =
                 '<i class="bi bi-people me-1"></i> HR INTERVIEW';
-
         }
 
+        // --------------------------------------
+        // FIRST QUESTION
+        // --------------------------------------
 
-        questionText.textContent =
-            data.question;
-
+        questionText.textContent = data.question;
 
         questionNumber.textContent =
             data.question_number;
 
-
         totalQuestions.textContent =
             data.total_questions;
 
-
         const progress =
-            (
-                data.question_number /
-                data.total_questions
-            ) * 100;
-
+            (data.question_number / data.total_questions) * 100;
 
         progressBar.style.width =
             `${progress}%`;
-
 
         progressBar.setAttribute(
             "aria-valuenow",
             Math.round(progress)
         );
 
-
         progressPercent.textContent =
             `${Math.round(progress)}%`;
 
+        // --------------------------------------
+        // RESET ANSWER
+        // --------------------------------------
+
+        currentAnswer = "";
+        interimAnswer = "";
+
+        transcriptText.textContent =
+            "Your spoken answer will appear here...";
+
+        transcriptText.classList.add(
+            "text-secondary"
+        );
+
+        answerStatus.textContent =
+            "Waiting";
+
+        // --------------------------------------
+        // PREPARE RECORDING
+        // --------------------------------------
 
         voiceTitle.textContent =
             "Preparing interview...";
 
+        voiceDescription.textContent =
+            "Please allow microphone access.";
 
         updateStatus(
             "Requesting audio recording permission...",
             true
         );
 
-
         await startAudioRecording();
 
+        // --------------------------------------
+        // IMPORTANT:
+        // SPEAK QUESTION FIRST
+        // --------------------------------------
 
-        await speakQuestion(
-            data.question
-        );
+        await speakQuestion(data.question);
 
+        // --------------------------------------
+        // ONLY AFTER AI FINISHES SPEAKING
+        // START LISTENING
+        // --------------------------------------
 
-        startListening();
-
+        if (!isProcessing) {
+            startListening();
+        }
 
     } catch (error) {
-
         console.error(error);
-
 
         voiceTitle.textContent =
             "Unable to load interview";
 
-
         voiceDescription.textContent =
             "Please start the interview again.";
 
-
         updateStatus(
-            error.message
+            error.message ||
+            "Unable to load interview."
         );
 
-
-        micButton.disabled =
-            true;
-
-
-        doneButton.disabled =
-            true;
-
+        micButton.disabled = true;
+        doneButton.disabled = true;
     }
-
 }
 
 
