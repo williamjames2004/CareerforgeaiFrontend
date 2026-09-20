@@ -1316,31 +1316,43 @@ function renderQuestions(questions) {
         questions.map(
             (question, index) => {
 
-                let questionText =
-                    question;
-
-
-                if (
-                    typeof question ===
-                    "object" &&
-                    question !== null
-                ) {
-
-                    questionText =
-                        question.question ||
-                        question.text ||
-                        question.title ||
-                        JSON.stringify(
-                            question
+                const questionText =
+                    question &&
+                    typeof question === "object"
+                        ? (
+                            question.question ||
+                            question.text ||
+                            question.title ||
+                            "Question not available"
+                        )
+                        : (
+                            question ||
+                            "Question not available"
                         );
 
-                }
+
+                const answerText =
+                    question &&
+                    typeof question === "object"
+                        ? (
+                            question.answer ||
+                            "No answer was recorded."
+                        )
+                        : "No answer was recorded.";
+
+
+                const questionNumber =
+                    question &&
+                    typeof question === "object" &&
+                    question.number
+                        ? question.number
+                        : index + 1;
 
 
                 return `
 
                     <div class="question-card
-                                p-3 p-md-4 mb-3">
+                                p-3 p-md-4 mb-4">
 
                         <div class="d-flex
                                     align-items-start
@@ -1349,25 +1361,61 @@ function renderQuestions(questions) {
                             <div class="question-number
                                         flex-shrink-0">
 
-                                ${index + 1}
+                                ${questionNumber}
 
                             </div>
 
 
                             <div class="pt-1 flex-grow-1">
 
+                                <!-- QUESTION -->
+
                                 <div class="question-label mb-2">
 
-                                    Question ${index + 1}
+                                    Question ${questionNumber}
 
                                 </div>
 
+
                                 <div class="fw-semibold
-                                            lh-lg">
+                                            lh-lg mb-4">
 
                                     ${escapeHTML(
                                         questionText
                                     )}
+
+                                </div>
+
+
+                                <!-- ANSWER -->
+
+                                <div class="border-top pt-3">
+
+                                    <div class="d-flex
+                                                align-items-center
+                                                gap-2 mb-2">
+
+                                        <i class="bi bi-mic-fill
+                                                  text-primary"></i>
+
+                                        <div class="question-label">
+
+                                            Your Answer
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="text-secondary
+                                                lh-lg"
+                                         style="white-space: pre-wrap;">
+
+                                        ${escapeHTML(
+                                            answerText
+                                        )}
+
+                                    </div>
 
                                 </div>
 
@@ -1402,6 +1450,26 @@ async function loadResult() {
     }
 
 
+    const token =
+        localStorage.getItem(
+            "careerforge_token"
+        );
+
+
+    if (!token) {
+
+        window.location.href =
+            "login.html?redirect=" +
+            encodeURIComponent(
+                "interview-result.html?interview_id=" +
+                interviewId
+            );
+
+        return;
+
+    }
+
+
     document
         .getElementById("loadingState")
         .classList.remove("d-none");
@@ -1425,11 +1493,12 @@ async function loadResult() {
                 {
                     method: "GET",
 
-                    credentials: "include",
-
                     headers: {
                         "Accept":
-                            "application/json"
+                            "application/json",
+
+                        "Authorization":
+                            `Bearer ${token}`
                     }
                 }
             );
