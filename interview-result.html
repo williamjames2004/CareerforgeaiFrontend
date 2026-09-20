@@ -7,7 +7,7 @@
     <title>Interview Result | CareerForge AI</title>
 
     <meta name="description"
-          content="View your completed CareerForge AI interview session, candidate information, interview questions and recording status.">
+          content="View your completed CareerForge AI interview session, candidate information, interview questions, answers and recording.">
 
     <meta name="keywords"
           content="CareerForge AI interview result, AI interview, mock interview result, technical interview, HR interview">
@@ -239,6 +239,12 @@
             text-transform: uppercase;
         }
 
+        .answer-box {
+            background: #f8f9ff;
+            border: 1px solid #e8eaf5;
+            border-radius: 14px;
+        }
+
         .empty-state {
             min-height: 300px;
             border: 1px dashed #dfe3ee;
@@ -411,9 +417,7 @@
             <div class="loading-box">
 
                 <div class="loading-icon">
-
                     <i class="bi bi-stars"></i>
-
                 </div>
 
                 <div class="spinner-border text-primary mb-3"
@@ -444,9 +448,7 @@
                 <div class="d-flex align-items-start gap-3">
 
                     <div class="error-icon">
-
                         <i class="bi bi-exclamation-triangle-fill fs-4"></i>
-
                     </div>
 
                     <div class="flex-grow-1">
@@ -457,9 +459,7 @@
 
                         <p id="errorMessage"
                            class="text-secondary mb-4">
-
                             Something went wrong.
-
                         </p>
 
                         <div class="d-flex flex-wrap gap-2">
@@ -509,24 +509,18 @@
                                         gap-3 mb-4">
 
                                 <div class="hero-icon">
-
                                     <i class="bi bi-clipboard2-check"></i>
-
                                 </div>
 
                                 <div>
 
                                     <div class="small fw-bold
                                                 opacity-75 mb-1">
-
                                         CAREERFORGE AI
-
                                     </div>
 
                                     <h1 class="display-6 fw-bold mb-0">
-
                                         Interview Result
-
                                     </h1>
 
                                 </div>
@@ -537,7 +531,7 @@
 
                                 Your AI-powered interview session has
                                 been successfully completed. Review the
-                                questions from your practice session below.
+                                questions, your answers and recording below.
 
                             </p>
 
@@ -569,9 +563,7 @@
                 <div class="d-flex align-items-center gap-3">
 
                     <div class="success-icon">
-
                         <i class="bi bi-check-lg"></i>
-
                     </div>
 
                     <div>
@@ -583,7 +575,7 @@
                         <p class="text-secondary mb-0">
 
                             Your interview session has been recorded
-                            and the questions have been saved.
+                            and your questions and answers have been saved.
 
                         </p>
 
@@ -605,9 +597,7 @@
                     <div class="d-flex align-items-center gap-3">
 
                         <div class="section-icon">
-
                             <i class="bi bi-person-vcard"></i>
-
                         </div>
 
                         <div>
@@ -647,18 +637,14 @@
                                         align-items-center gap-3">
 
                                 <div class="info-icon">
-
                                     <i class="bi bi-person"></i>
-
                                 </div>
 
                                 <div>
 
                                     <small class="text-secondary
                                                  d-block mb-1">
-
                                         Candidate Name
-
                                     </small>
 
                                     <strong id="candidateName">
@@ -683,18 +669,14 @@
                                         align-items-center gap-3">
 
                                 <div class="info-icon">
-
                                     <i class="bi bi-briefcase"></i>
-
                                 </div>
 
                                 <div>
 
                                     <small class="text-secondary
                                                  d-block mb-1">
-
                                         Interview Type
-
                                     </small>
 
                                     <strong id="interviewType">
@@ -719,18 +701,14 @@
                                         align-items-center gap-3">
 
                                 <div class="info-icon">
-
                                     <i class="bi bi-question-circle"></i>
-
                                 </div>
 
                                 <div>
 
                                     <small class="text-secondary
                                                  d-block mb-1">
-
                                         Total Questions
-
                                     </small>
 
                                     <strong id="totalQuestions">
@@ -755,23 +733,37 @@
                                         align-items-center gap-3">
 
                                 <div class="info-icon">
-
                                     <i class="bi bi-mic"></i>
-
                                 </div>
 
-                                <div>
+                                <div class="flex-grow-1">
 
                                     <small class="text-secondary
                                                  d-block mb-1">
-
                                         Interview Audio
-
                                     </small>
 
-                                    <strong id="audioStatus">
-                                        -
-                                    </strong>
+                                    <div class="d-flex
+                                                flex-wrap
+                                                align-items-center
+                                                gap-2">
+
+                                        <strong id="audioStatus">
+                                            -
+                                        </strong>
+
+                                        <button id="downloadAudioButton"
+                                                type="button"
+                                                class="btn btn-sm btn-primary
+                                                       rounded-3 d-none"
+                                                onclick="downloadAudio()">
+
+                                            <i class="bi bi-download me-1"></i>
+                                            Download MP3
+
+                                        </button>
+
+                                    </div>
 
                                 </div>
 
@@ -786,25 +778,23 @@
             </div>
 
 
-            <!-- QUESTIONS -->
+            <!-- QUESTIONS AND ANSWERS -->
             <div class="info-card p-4 p-md-5 mb-4">
 
                 <div class="d-flex align-items-center gap-3 mb-4">
 
                     <div class="section-icon">
-
                         <i class="bi bi-list-check"></i>
-
                     </div>
 
                     <div>
 
                         <h2 class="h4 fw-bold mb-1">
-                            Interview Questions
+                            Interview Questions & Answers
                         </h2>
 
                         <p class="text-secondary mb-0">
-                            Questions used during your interview session
+                            Questions asked during the interview and your recorded answers
                         </p>
 
                     </div>
@@ -824,9 +814,7 @@
                 <div class="d-flex align-items-start gap-3">
 
                     <div class="section-icon">
-
                         <i class="bi bi-fingerprint"></i>
-
                     </div>
 
                     <div class="flex-grow-1">
@@ -843,7 +831,6 @@
                         <div class="interview-id-box
                                     p-3 small font-monospace"
                              id="interviewId">
-
                         </div>
 
                     </div>
@@ -994,9 +981,7 @@
 
                         <a href="index.html#features"
                            class="footer-link text-secondary">
-
                             AI Interview
-
                         </a>
 
                     </li>
@@ -1005,9 +990,7 @@
 
                         <a href="index.html#features"
                            class="footer-link text-secondary">
-
                             Group Discussion
-
                         </a>
 
                     </li>
@@ -1016,9 +999,7 @@
 
                         <a href="index.html#features"
                            class="footer-link text-secondary">
-
                             Communication
-
                         </a>
 
                     </li>
@@ -1027,9 +1008,7 @@
 
                         <a href="index.html#features"
                            class="footer-link text-secondary">
-
                             Resume Tester
-
                         </a>
 
                     </li>
@@ -1052,9 +1031,7 @@
 
                         <a href="login.html"
                            class="footer-link text-secondary">
-
                             Login
-
                         </a>
 
                     </li>
@@ -1063,9 +1040,7 @@
 
                         <a href="register.html"
                            class="footer-link text-secondary">
-
                             Register
-
                         </a>
 
                     </li>
@@ -1074,9 +1049,7 @@
 
                         <a href="index.html"
                            class="footer-link text-secondary">
-
                             Home
-
                         </a>
 
                     </li>
@@ -1168,28 +1141,12 @@ function escapeHTML(value) {
 
     }
 
-
     return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
@@ -1200,16 +1157,13 @@ function showError(message) {
         .getElementById("loadingState")
         .classList.add("d-none");
 
-
     document
         .getElementById("resultContent")
         .classList.add("d-none");
 
-
     document
         .getElementById("errorState")
         .classList.remove("d-none");
-
 
     document
         .getElementById("errorMessage")
@@ -1222,22 +1176,12 @@ function showError(message) {
 function formatInterviewType(type) {
 
     if (!type) {
-
         return "Interview";
-
     }
 
-
     return String(type)
-        .replace(
-            /[_-]/g,
-            " "
-        )
-        .replace(
-            /\b\w/g,
-            char =>
-                char.toUpperCase()
-        );
+        .replace(/[_-]/g, " ")
+        .replace(/\b\w/g, char => char.toUpperCase());
 
 }
 
@@ -1245,11 +1189,8 @@ function formatInterviewType(type) {
 function getCandidateName(candidate) {
 
     if (!candidate) {
-
         return "Candidate";
-
     }
-
 
     return (
         candidate.name ||
@@ -1269,7 +1210,6 @@ function renderQuestions(questions) {
         document.getElementById(
             "questionsContainer"
         );
-
 
     if (
         !Array.isArray(questions) ||
@@ -1335,8 +1275,10 @@ function renderQuestions(questions) {
                     question &&
                     typeof question === "object"
                         ? (
-                            question.answer ||
-                            "No answer was recorded."
+                            question.answer &&
+                            String(question.answer).trim()
+                                ? question.answer
+                                : "No answer was recorded."
                         )
                         : "No answer was recorded.";
 
@@ -1361,7 +1303,9 @@ function renderQuestions(questions) {
                             <div class="question-number
                                         flex-shrink-0">
 
-                                ${questionNumber}
+                                ${escapeHTML(
+                                    questionNumber
+                                )}
 
                             </div>
 
@@ -1372,7 +1316,9 @@ function renderQuestions(questions) {
 
                                 <div class="question-label mb-2">
 
-                                    Question ${questionNumber}
+                                    Question ${escapeHTML(
+                                        questionNumber
+                                    )}
 
                                 </div>
 
@@ -1389,7 +1335,8 @@ function renderQuestions(questions) {
 
                                 <!-- ANSWER -->
 
-                                <div class="border-top pt-3">
+                                <div class="answer-box
+                                            p-3 p-md-4">
 
                                     <div class="d-flex
                                                 align-items-center
@@ -1429,6 +1376,167 @@ function renderQuestions(questions) {
 
             }
         ).join("");
+
+}
+
+
+async function downloadAudio() {
+
+    const interviewId =
+        getInterviewId();
+
+    if (!interviewId) {
+
+        showError(
+            "Interview ID is missing from the URL."
+        );
+
+        return;
+
+    }
+
+
+    const token =
+        localStorage.getItem(
+            "careerforge_token"
+        );
+
+
+    if (!token) {
+
+        window.location.href =
+            "login.html?redirect=" +
+            encodeURIComponent(
+                "interview-result.html?interview_id=" +
+                interviewId
+            );
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "downloadAudioButton"
+        );
+
+
+    const originalHTML =
+        button.innerHTML;
+
+
+    button.disabled = true;
+
+    button.innerHTML = `
+        <span class="spinner-border spinner-border-sm me-1"
+              role="status"
+              aria-hidden="true"></span>
+        Downloading...
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_BASE}/api/interview/${encodeURIComponent(interviewId)}/audio`,
+                {
+                    method: "GET",
+
+                    headers: {
+                        "Accept": "audio/mpeg",
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            );
+
+
+        if (!response.ok) {
+
+            let message =
+                "Unable to download interview audio.";
+
+            try {
+
+                const data =
+                    await response.json();
+
+                message =
+                    data.message ||
+                    data.error ||
+                    message;
+
+            } catch (error) {
+                // Response was not JSON.
+            }
+
+            throw new Error(message);
+
+        }
+
+
+        const blob =
+            await response.blob();
+
+
+        if (!blob.size) {
+
+            throw new Error(
+                "The interview audio file is empty."
+            );
+
+        }
+
+
+        const blobUrl =
+            window.URL.createObjectURL(
+                blob
+            );
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = blobUrl;
+
+        link.download =
+            "careerforge-interview.mp3";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+
+        window.URL.revokeObjectURL(
+            blobUrl
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Audio download error:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "Unable to download the interview audio."
+        );
+
+    } finally {
+
+        button.disabled = false;
+
+        button.innerHTML =
+            originalHTML;
+
+    }
 
 }
 
@@ -1548,20 +1656,43 @@ async function loadResult() {
             data.total_questions ?? 0;
 
 
-        document
-            .getElementById("audioStatus")
-            .textContent =
-            data.audio_available
-                ? "Available"
-                : "Not Available";
+        const audioStatus =
+            document.getElementById(
+                "audioStatus"
+            );
 
 
-        document
-            .getElementById("audioStatus")
-            .className =
-            data.audio_available
-                ? "badge audio-badge rounded-pill px-3 py-2"
-                : "";
+        const downloadButton =
+            document.getElementById(
+                "downloadAudioButton"
+            );
+
+
+        if (data.audio_available) {
+
+            audioStatus.textContent =
+                "Available";
+
+            audioStatus.className =
+                "badge audio-badge rounded-pill px-3 py-2";
+
+            downloadButton.classList.remove(
+                "d-none"
+            );
+
+        } else {
+
+            audioStatus.textContent =
+                "Not Available";
+
+            audioStatus.className =
+                "text-secondary";
+
+            downloadButton.classList.add(
+                "d-none"
+            );
+
+        }
 
 
         document
